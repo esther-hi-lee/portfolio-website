@@ -1,0 +1,6 @@
+.auto-scroll-wrapper { width: 100%; padding: 8px 0; }
+.auto-scroll-container { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; }
+.auto-scroll-container::-webkit-scrollbar { display: none; }
+.auto-scroll-track { display: flex; align-items: center; gap: var(--gap, 16px); width: max-content; }
+.auto-scroll-item { flex: 0 0 auto; }
+.auto-scroll-item img { display: block; height: var(--height, 160px); width: auto; border-radius: 8px; object-fit: cover; user-select: none; pointer-events: none; }
