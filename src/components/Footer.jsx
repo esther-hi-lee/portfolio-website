@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        © {year} Esther Hyoin Lee • All rights reserved
+        © {year} Esther Hyo In Lee • All rights reserved
       </div>
     </footer>
   )
