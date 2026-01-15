@@ -7,7 +7,7 @@ export default function RouterErrorPage() {
   const is404 = isRouteErrorResponse(error) && error.status === 404
 
   const handleGoHome = () => {
-    window.location.href = '/'
+    window.location.hash = '/'
   }
 
   const handleGoBack = () => {
