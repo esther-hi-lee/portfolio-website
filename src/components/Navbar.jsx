@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -8,12 +7,11 @@ export default function Navbar() {
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <div style={{fontWeight:700}}>Esther Hyo In Lee</div>
+        <NavLink to="/" style={{fontWeight:700, textDecoration:'none', color:'inherit'}}>Esther Hyo In Lee</NavLink>
         <nav>
           <NavLink to="/" className={linkClass} end>Home</NavLink>
           <NavLink to="/gallery" className={linkClass}>Gallery</NavLink>
           <NavLink to="/about" className={linkClass}>About</NavLink>
-          <NavLink to="/contact" className={linkClass}>Contact</NavLink>
         </nav>
       </div>
     </header>

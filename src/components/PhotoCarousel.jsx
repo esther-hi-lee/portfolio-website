@@ -108,7 +108,7 @@ export default function PhotoCarousel({ items = [] }) {
             src={current.image}
             alt={current.title || 'Artwork image'}
             loading="lazy"
-            style={{ maxHeight: '80vh', width: 'auto', maxWidth: '100%', height: 'auto', display: 'block', margin: '0 auto', objectFit: 'contain' }}
+            style={{ maxHeight: '75vh', width: 'auto', maxWidth: '100%', height: 'auto', display: 'block', margin: '0 auto', objectFit: 'contain' }}
           />
         </div>
         <button

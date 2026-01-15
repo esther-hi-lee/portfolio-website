@@ -10,7 +10,7 @@
 html, body, #root { height: 100%; }
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: 'Quicksand', sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -55,6 +55,29 @@ img { max-width: 100%; display: block; }
   padding: 2rem 0;
   color: var(--muted);
   font-size: .9rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  color: var(--text);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.social-icon:hover {
+  opacity: 1;
 }
 
 .grid {

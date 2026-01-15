@@ -6,8 +6,7 @@ export default function AboutPage() {
     <section style={{marginTop: '2rem'}}>
       <h2>About</h2>
       <p style={{maxWidth: 700}}>
-        Short artist bio goes here. Keep it concise. You can talk about your medium,
-        influences, and recent exhibitions. Replace this text in <code>src/pages/AboutPage.jsx</code>.
+        Esther Hyo In Lee is a Game and Entertainment Design student at Otis College of Art and Design. In her work, she focuses on detail, storytelling, functionality, and investigation of play. As a creative, Lee seeks spaces heavily driven by teamwork, innovation, and problem solving.
       </p>
     </section>
   )

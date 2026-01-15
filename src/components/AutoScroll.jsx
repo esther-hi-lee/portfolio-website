@@ -17,7 +17,7 @@ function pickAlt(item) {
   return item?.title || item?.name || item?.alt || ''
 }
 
-export default function AutoScroll({ items = [], height = 160, gap = 16, speed = 0.15, pauseOnHover = true }) {
+export default function AutoScroll({ items = [], height = 200, gap = 16, speed = 0.15, pauseOnHover = true }) {
   const containerRef = useRef(null)
   const [paused, setPaused] = useState(false)
 

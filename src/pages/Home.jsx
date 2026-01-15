@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AutoScroll items={artworks} height={320} speed={0.075} />
+      <AutoScroll items={artworks} height={500} speed={0.075} />
     </>
   )
 }

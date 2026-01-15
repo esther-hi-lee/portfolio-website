@@ -1,300 +1,225 @@
 [
   {
     "id": "1",
-    "title": "Untitled I",
-    "year": "2024",
-    "medium": "Oil on canvas",
-    "size": "18 \u00d7 24 in",
+    "title": "Process I",
     "image":   "assets/_A_Hungry_Hamster_Side_Scroller_Game_(Piece_1)/process pic hamster1.png",
-    "category": "A Hungry Hamster Side Scroller Game"
+    "category": "\"A Hungry Hamster\" Side Scroller Game"
   },
 
   {
     "id": "2",
-    "title": "Untitled II",
-    "year": "2024",
-    "medium": "Acrylic on panel",
-    "size": "16 \u00d7 20 in",
+    "title": "Process II",
     "image": "assets/_A_Hungry_Hamster_Side_Scroller_Game_(Piece_1)/process pic hamster2.png",
-    "category": "A Hungry Hamster Side Scroller Game"
+    "category": "\"A Hungry Hamster\" Side Scroller Game"
   },
   {
     "id": "3",
-    "title": "Untitled III",
-    "year": "2023",
-    "medium": "Charcoal on paper",
-    "size": "11 \u00d7 14 in",
+    "title": "Process III",
     "image": "assets/_A_Hungry_Hamster_Side_Scroller_Game_(Piece_1)/process pic hamster3.png",
-    "category": "A Hungry Hamster Side Scroller Game"
+    "category": "\"A Hungry Hamster\" Side Scroller Game"
   },
   {
     "id": "4",
-    "title": "Untitled IV",
+    "title": "A Hungry Hamster",
     "year": "2025",
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/qYrkGiGBVqo?si=gNVjbFaTaeEVLFbh",
-    "category": "A Hungry Hamster Side Scroller Game"
+    "category": "\"A Hungry Hamster\" Side Scroller Game"
   },
   {
     "id": "5",
-    "title": "Untitled V",
-    "year": "2022",
-    "medium": "Photograph",
-    "size": "3000 \u00d7 2000 px",
+    "title": "Process I",
     "image": "assets/_Drowsy_Cinematic_Nature_Scene_(Piece_2)/process pic nature scene 1.png",
-    "category": "Drowsy Cinematic Nature Scene"
+    "category": "\"Drowsy\" Cinematic Nature Scene"
   },
   {
     "id": "6",
-    "title": "Untitled VI",
-    "year": "2021",
-    "medium": "Digital",
-    "size": "1920 \u00d7 1080 px",
+    "title": "Process II",
     "image": "assets/_Drowsy_Cinematic_Nature_Scene_(Piece_2)/process pic nature scene 2.png",
-    "category": "Drowsy Cinematic Nature Scene"
+    "category": "\"Drowsy\" Cinematic Nature Scene"
   },
   {
     "id": "7",
-    "title": "Untitled VII",
-    "year": "",
-    "medium": "",
-    "size": "",
+    "title": "Process III",
     "image": "assets/_Drowsy_Cinematic_Nature_Scene_(Piece_2)/process pic nature scene 3.png",
-    "category": "Drowsy Cinematic Nature Scene"
+    "category": "\"Drowsy\" Cinematic Nature Scene"
   },
   {
     "id": "8",
-    "title": "Untitled VIII",
-    "year": "",
+    "title": "Drowsy",
+    "year": "2025",
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/DyFhIXq863I?si=9YnLuOJGBcadMG-i",
-    "category": "Drowsy Cinematic Nature Scene"
+    "category": "\"Drowsy\" Cinematic Nature Scene"
   },
   {
     "id": "P3-process-1",
-    "title": "Resting Point – Process 1",
-    "year": "",
-    "medium": "Work-in-Progress",
-    "size": "",
+    "title": "Process I",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 1.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-2",
-    "title": "Resting Point – Process 2",
-    "year": "",
-    "medium": "Work-in-Progress",
-    "size": "",
+    "title": "Process II",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 2.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-3",
-    "title": "Resting Point – Process 3",
-    "year": "",
-    "medium": "Work-in-Progress",
-    "size": "",
+    "title": "Process III",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 3.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-4",
-    "title": "Resting Point – Process 4",
-    "year": "",
-    "medium": "Work-in-Progress",
-    "size": "",
+    "title": "Process IV",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 4.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-5",
-    "title": "Resting Point – Process 5",
-    "year": "",
-    "medium": "Work-in-Progress",
-    "size": "",
+    "title": "Process V",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 5.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-6",
-    "title": "Resting Point – Process 6",
-    "year": "",
-    "medium": "Work-in-Progress",
-    "size": "",
+    "title": "Process VI",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 6.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-7",
-    "title": "Resting Point – Process 7",
-    "year": "",
-    "medium": "Work-in-Progress",
-    "size": "",
+    "title": "Process VII",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 7.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-1",
-    "title": "Resting Point – Cart Shot 1",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot I",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 1.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-2",
-    "title": "Resting Point – Cart Shot 2",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot II",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 2.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-3",
-    "title": "Resting Point – Cart Shot 3",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot III",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 3.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-4",
-    "title": "Resting Point – Cart Shot 4",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot IV",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 4.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-5",
-    "title": "Resting Point – Cart Shot 5",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot V",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 5.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-6",
-    "title": "Resting Point – Cart Shot 6",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot VI",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 6.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-7",
-    "title": "Resting Point – Cart Shot 7",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot VII",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 7.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-8",
-    "title": "Resting Point – Cart Shot 8",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot VIII",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 8.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-9",
-    "title": "Resting Point – Cart Shot 9",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Cart Shot IX",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 9.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-wall-1",
-    "title": "Resting Point – Wall Shot 1",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Wall Shot I",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 1.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-wall-2",
-    "title": "Resting Point – Wall Shot 2",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Wall Shot II",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 2.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-wall-3",
-    "title": "Resting Point – Wall Shot 3",
-    "year": "",
-    "medium": "3D Render",
-    "size": "",
+    "title": "Wall Shot III",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 3.png",
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-video",
-    "title": "Resting Point Car and Wall Scene",
-    "year": "",
+    "title": "\"Resting Point\" Car and Wall Scene",
+    "year": "2025",
     "medium": "Video",
     "size": "",
     "youtube": "https://youtu.be/rdorrgXbOwM?si=cUzDzrIVAu5HzVfy", 
-    "category": "Resting Point Scene"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P4-4",
     "title": "Will You Be My Friend?",
-    "year": "",
+    "year": "2025",
     "medium": "",
     "size": "",
     "image": "assets/_Will_You_Be_My_Friend_Concept_Art_(Pieces_4)/_Will You Be My Friend_ Piece 4.jpg",
-    "category": "Will You Be My Friend?"
+    "category": "\"Will You Be My Friend?\""
   },
   {
     "id": "P5-video",
-    "title": "Reminisce City Scene – Project",
+    "title": "\"Reminisce\" City Scene",
     "year": "",
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/G1jacIYfjhc?si=0VcYUecFsdO12Kvy",
-    "category": "Reminisce City Scene"
+    "category": "\"Reminisce\" City Scene"
   },
   {
     "id": "P5-process-1",
-    "title": "Reminisce City Scene – Process 1",
+    "title": "Process I",
     "year": "",
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 1.png",
-    "category": "Reminisce City Scene"
+    "category": "\"Reminisce\" City Scene"
   },
   {
     "id": "P5-process-2",
-    "title": "Reminisce City Scene – Process 2",
+    "title": "Process II",
     "year": "",
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 2.png",
-    "category": "Reminisce City Scene"
+    "category": "\"Reminisce\" City Scene"
   },
   {
     "id": "P5-process-3",
-    "title": "Reminisce City Scene – Process 3",
+    "title": "Process III",
     "year": "",
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 3.png",
-    "category": "Reminisce City Scene"
+    "category": "\"Reminisce\" City Scene"
   }
 ]
