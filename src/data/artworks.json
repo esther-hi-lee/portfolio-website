@@ -58,124 +58,129 @@
     "id": "P3-process-1",
     "title": "Process I",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 1.png",
-    "category": "\"Resting Point\" Scene"
+    "subcaption": [
+      "Project References",
+      "Cart concept art by: Brain Taylor",
+      "Scene concept art by: Mick Jundt"
+    ],
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-2",
     "title": "Process II",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 2.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-3",
     "title": "Process III",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 3.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-4",
     "title": "Process IV",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 4.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-5",
     "title": "Process V",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 5.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-6",
     "title": "Process VI",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 6.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-7",
     "title": "Process VII",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 7.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-1",
     "title": "Cart Shot I",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 1.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-2",
     "title": "Cart Shot II",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 2.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-3",
     "title": "Cart Shot III",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 3.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-4",
     "title": "Cart Shot IV",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 4.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-5",
     "title": "Cart Shot V",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 5.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-6",
     "title": "Cart Shot VI",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 6.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-7",
     "title": "Cart Shot VII",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 7.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-8",
     "title": "Cart Shot VIII",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 8.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-cart-9",
     "title": "Cart Shot IX",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 9.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-wall-1",
     "title": "Wall Shot I",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 1.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-wall-2",
     "title": "Wall Shot II",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 2.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-wall-3",
     "title": "Wall Shot III",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 3.png",
-    "category": "\"Resting Point\" Scene"
+    "category": "\"Resting Point\""
   },
   {
     "id": "P3-video",
-    "title": "\"Resting Point\" Car and Wall Scene",
+    "title": "\"Resting Point\"",
     "year": "2025",
     "medium": "Video",
     "size": "",
-    "youtube": "https://youtu.be/rdorrgXbOwM?si=cUzDzrIVAu5HzVfy", 
-    "category": "\"Resting Point\" Scene"
+    "youtube": "https://youtu.be/rdorrgXbOwM?si=cUzDzrIVAu5HzVfy",
+    "category": "\"Resting Point\""
   },
   {
     "id": "P4-4",
@@ -188,12 +193,12 @@
   },
   {
     "id": "P5-video",
-    "title": "\"Reminisce\" City Scene",
+    "title": "\"Reminisce\"",
     "year": "",
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/G1jacIYfjhc?si=0VcYUecFsdO12Kvy",
-    "category": "\"Reminisce\" City Scene"
+    "category": "\"Reminisce\""
   },
   {
     "id": "P5-process-1",
@@ -202,7 +207,7 @@
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 1.png",
-    "category": "\"Reminisce\" City Scene"
+    "category": "\"Reminisce\""
   },
   {
     "id": "P5-process-2",
@@ -211,7 +216,7 @@
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 2.png",
-    "category": "\"Reminisce\" City Scene"
+    "category": "\"Reminisce\""
   },
   {
     "id": "P5-process-3",
@@ -220,6 +225,6 @@
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 3.png",
-    "category": "\"Reminisce\" City Scene"
+    "category": "\"Reminisce\""
   }
 ]

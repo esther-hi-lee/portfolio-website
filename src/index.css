@@ -39,6 +39,24 @@ img { max-width: 100%; display: block; }
   height: 64px;
 }
 
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.nav-social-icons .social-icon {
+  margin-left: 0;
+  padding: 2px;
+}
+
 .nav a {
   margin-left: 1rem;
   padding: .25rem .5rem;

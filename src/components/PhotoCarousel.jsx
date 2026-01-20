@@ -130,6 +130,15 @@ export default function PhotoCarousel({ items = [] }) {
         {index + 1} / {len} {current.title ? `· ${current.title}` : ''}
       </div>
 
+      {/* Subcaption / Credits */}
+      {current.subcaption && current.subcaption.length > 0 && (
+        <div style={{ marginTop: '.5rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.85rem' }}>
+          {current.subcaption.map((line, i) => (
+            <div key={i} style={{ fontStyle: i === 0 ? 'normal' : 'italic', fontWeight: i === 0 ? 600 : 400 }}>{line}</div>
+          ))}
+        </div>
+      )}
+
       {/* Thumbnails strip: up to 3 previous and 3 next around the current */}
       <div style={{
         marginTop: '.5rem',
