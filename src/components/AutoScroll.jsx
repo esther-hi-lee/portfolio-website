@@ -17,15 +17,58 @@ function pickAlt(item) {
   return item?.title || item?.name || item?.alt || ''
 }
 
-export default function AutoScroll({ items = [], height = 200, gap = 16, speed = 0.15, pauseOnHover = true }) {
+export default function AutoScroll({ 
+  items = [], 
+  height = 200, 
+  gap = 16, 
+  speed = 0.15, 
+  pauseOnHover = true,
+  fadeOnScroll = false 
+}) {
   const containerRef = useRef(null)
+  const wrapperRef = useRef(null)
   const [paused, setPaused] = useState(false)
+  const [opacity, setOpacity] = useState(1)
 
   const images = useMemo(() => {
     return (items || [])
       .map((it) => ({ src: pickSrc(it), alt: pickAlt(it) }))
       .filter((x) => !!x.src)
   }, [items])
+
+  // Scroll-based opacity fade effect
+  useEffect(() => {
+    if (!fadeOnScroll || !wrapperRef.current) return
+
+    const handleScroll = () => {
+      const el = wrapperRef.current
+      if (!el) return
+
+      const rect = el.getBoundingClientRect()
+      const vh = window.visualViewport?.height ?? window.innerHeight
+      
+      // Start at 100% when at top of page, fade to 10% as component leaves viewport
+      const elementBottom = rect.bottom
+      const elementHeight = rect.height
+      
+      // When bottom of element is at bottom of viewport or below = 100% opacity
+      // When bottom of element is at top of viewport (leaving) = 10% opacity
+      if (elementBottom >= vh) {
+        setOpacity(1)
+      } else if (elementBottom <= 0) {
+        setOpacity(0.1)
+      } else {
+        // Linear interpolation: elementBottom goes from vh (full visible) to 0 (leaving)
+        const progress = elementBottom / vh
+        // Map progress [0, 1] to opacity [0.1, 1]
+        setOpacity(0.1 + progress * 0.9)
+      }
+    }
+
+    handleScroll() // Initial check
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [fadeOnScroll])
 
   useEffect(() => {
     const el = containerRef.current
@@ -66,8 +109,14 @@ export default function AutoScroll({ items = [], height = 200, gap = 16, speed =
     '--height': `${height}px`,
   }
 
+  const wrapperStyle = {
+    ...styleVars,
+    opacity: fadeOnScroll ? opacity : 1,
+    transition: 'opacity 0.1s ease-out',
+  }
+
   return (
-    <div className="auto-scroll-wrapper" style={styleVars}>
+    <div className="auto-scroll-wrapper" style={wrapperStyle} ref={wrapperRef}>
       <div
         className="auto-scroll-container"
         ref={containerRef}

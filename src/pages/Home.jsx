@@ -3,6 +3,7 @@ import Hero from '../components/Hero.jsx'
 import GalleryGrid from '../components/GalleryGrid.jsx'
 import artworks from '../data/artworks.json'
 import AutoScroll from '../components/AutoScroll.jsx'
+import MediaMosaic from '../components/MediaMosaic.jsx'
 
 export default function Home() {
   // Show first 6 as a teaser
@@ -10,7 +11,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AutoScroll items={artworks} height={500} speed={0.075} pauseOnHover={false} />
+      <AutoScroll items={artworks} height={500} speed={0.075} pauseOnHover={false} fadeOnScroll={true} />
+      <MediaMosaic />
     </>
   )
 }

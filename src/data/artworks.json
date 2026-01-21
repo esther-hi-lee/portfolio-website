@@ -57,6 +57,7 @@
   {
     "id": "P3-process-1",
     "title": "Process I",
+    "description": "Initial concept gathering and reference collection. The cart concept art by Brian Taylor and scene concept art by Mick Jundt served as the foundation for this stylized 3D project.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 1.png",
     "subcaption": [
       "Project References",
@@ -68,36 +69,42 @@
   {
     "id": "P3-process-2",
     "title": "Process II",
+    "description": "Beginning the 3D modeling phase, establishing the basic forms and proportions of the scene elements while maintaining the stylized aesthetic from the concept art.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 2.png",
     "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-3",
     "title": "Process III",
+    "description": "Refining the geometry and adding more details to the 3D models. Focus on creating clean topology that supports the stylized look.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 3.png",
     "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-4",
     "title": "Process IV",
+    "description": "Texturing and material development phase. Creating hand-painted textures that complement the stylized 3D aesthetic.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 4.png",
     "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-5",
     "title": "Process V",
+    "description": "Scene composition and layout. Arranging all the 3D elements to create a cohesive and visually appealing environment.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 5.png",
     "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-6",
     "title": "Process VI",
+    "description": "Lighting setup and atmospheric effects. Establishing mood and depth through careful light placement and color grading.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 6.png",
     "category": "\"Resting Point\""
   },
   {
     "id": "P3-process-7",
     "title": "Process VII",
+    "description": "Final polish and rendering. Making last adjustments and preparing the scene for final output.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 7.png",
     "category": "\"Resting Point\""
   },
