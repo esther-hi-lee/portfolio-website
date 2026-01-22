@@ -9,7 +9,7 @@ export default function Gallery() {
   return (
     <div className="gallery-page">
       <header className="gallery-header">
-        <h1>Gallery</h1>
+        <h1>Projects</h1>
         <p className="gallery-subtitle">Browse all collections and projects</p>
       </header>
       
@@ -32,6 +32,9 @@ export default function Gallery() {
                   <span>🎨</span>
                 </div>
               )}
+              <div className="collection-overlay">
+                <h3 className="collection-overlay-title">{category.title}</h3>
+              </div>
             </div>
             <div className="collection-info">
               <h2 className="collection-title">{category.title}</h2>

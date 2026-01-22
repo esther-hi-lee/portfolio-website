@@ -28,7 +28,7 @@ export default function Navbar() {
         </div>
         <nav>
           <NavLink to="/" className={linkClass} end>Home</NavLink>
-          <NavLink to="/gallery" className={linkClass}>Gallery</NavLink>
+          <NavLink to="/gallery" className={linkClass}>Projects</NavLink>
           <NavLink to="/about" className={linkClass}>About</NavLink>
           <NavLink to="/contact" className={linkClass}>Contact</NavLink>
         </nav>

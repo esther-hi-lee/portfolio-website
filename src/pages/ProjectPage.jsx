@@ -1,10 +1,8 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import artworks from '../data/artworks.json'
-import PhotoCarousel from '../components/PhotoCarousel.jsx'
-import GalleryGrid from '../components/GalleryGrid.jsx'
-import { InteractiveScroll } from '../components/InteractiveScrollSimple.jsx'
 import { isYouTube, toYouTubeEmbedUrl } from '../utils/media.js'
+import './ProjectPage.css'
 
 // Convert category to URL-friendly slug
 export function categoryToSlug(category) {
@@ -26,7 +24,7 @@ export function getCategories() {
   return Array.from(categories).sort()
 }
 
-// Get category info with slug and thumbnail
+// Get category info with slug, thumbnail, and gallery description
 export function getCategoryInfo() {
   const categoryMap = new Map()
   
@@ -37,14 +35,21 @@ export function getCategoryInfo() {
           title: item.category,
           slug: categoryToSlug(item.category),
           items: [],
-          thumbnail: null
+          thumbnail: null,
+          galleryDescription: null
         })
       }
       const cat = categoryMap.get(item.category)
       cat.items.push(item)
-      // Use first image as thumbnail if not set
-      if (!cat.thumbnail && item.image) {
+      // Prefer explicit thumbnail field, otherwise use first image
+      if (item.thumbnail) {
+        cat.thumbnail = item.thumbnail
+      } else if (!cat.thumbnail && item.image) {
         cat.thumbnail = item.image
+      }
+      // Use galleryDescription from any item that has it
+      if (!cat.galleryDescription && item.galleryDescription) {
+        cat.galleryDescription = item.galleryDescription
       }
     }
   })
@@ -63,93 +68,203 @@ export default function ProjectPage() {
   if (!projectData) {
     return (
       <div className="container" style={{ paddingTop: '2rem' }}>
-        <Link to="/gallery" className="back-link">← Back to Gallery</Link>
+        <Link to="/gallery" className="back-link">← Back to Projects</Link>
         <h2>Project Not Found</h2>
         <p>The project you're looking for doesn't exist.</p>
       </div>
     )
   }
   
-  const { title, items } = projectData
+  const { title, items, galleryDescription } = projectData
   const videoItem = items.find(i => i.video || i.youtube || i.youtubeId)
   const photos = items.filter(i => !(i.video || i.youtube || i.youtubeId))
   const hasVideo = Boolean(videoItem)
   
-  // Check if any photos have descriptions - if so, use interactive scroll layout
-  const hasDescriptions = photos.some(item => item.description && item.description.trim())
+  // Get items with descriptions for the text column
+  const itemsWithDescriptions = items.filter(item => item.description && item.description.trim())
   
-  // Convert photos to interactive scroll format if descriptions exist
-  const interactiveItems = hasDescriptions ? photos.map(item => ({
-    id: item.id,
-    title: item.title,
-    description: item.description || '',
-    media: {
-      type: 'image',
-      src: item.image,
-      alt: item.title
-    }
-  })) : []
+  // Lightbox state
+  const [lightboxPhoto, setLightboxPhoto] = useState(null)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
   
+  const openLightbox = (photo, index) => {
+    setLightboxPhoto(photo)
+    setLightboxIndex(index)
+  }
+  
+  const closeLightbox = () => {
+    setLightboxPhoto(null)
+  }
+  
+  const goToPrev = (e) => {
+    e.stopPropagation()
+    const newIndex = lightboxIndex > 0 ? lightboxIndex - 1 : photos.length - 1
+    setLightboxIndex(newIndex)
+    setLightboxPhoto(photos[newIndex])
+  }
+  
+  const goToNext = (e) => {
+    e.stopPropagation()
+    const newIndex = lightboxIndex < photos.length - 1 ? lightboxIndex + 1 : 0
+    setLightboxIndex(newIndex)
+    setLightboxPhoto(photos[newIndex])
+  }
+
   return (
-    <div className="project-page">
-      <Link to="/gallery" className="back-link">← Back to Gallery</Link>
+    <div className="project-page-wrapper">
+      <Link to="/gallery" className="pdf-back-link">← Back to Projects</Link>
       
-      <header className="project-header">
-        <h1>{title}</h1>
-        <p className="project-count">{items.length} piece{items.length !== 1 ? 's' : ''}</p>
-      </header>
-      
-      {hasVideo && (
-        <section className="project-video">
-          <article className="card">
-            {isYouTube(videoItem.youtube || videoItem.youtubeId || videoItem.video) ? (
-              <iframe
-                src={toYouTubeEmbedUrl(videoItem.youtube || videoItem.youtubeId || videoItem.video)}
-                title={videoItem.title || 'YouTube video'}
-                style={{ width: '100%', aspectRatio: '16 / 9', border: 0, background: '#000' }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            ) : (
-              <video
-                controls
-                preload="metadata"
-                playsInline
-                poster={videoItem.poster || videoItem.image || undefined}
-                style={{ width: '100%', display: 'block', background: '#000' }}
-              >
-                <source src={videoItem.video} />
-                Your browser does not support the video tag.
-              </video>
-            )}
-            <div className="card-body">
-              <h3 className="card-title">{videoItem.title}</h3>
-              <div className="card-meta">
-                {(videoItem.year || '') + 
-                 (videoItem.medium ? (videoItem.year ? ' • ' : '') + videoItem.medium : '') + 
-                 (videoItem.size ? ' • ' + videoItem.size : '')}
+      <div className="pdf-layout">
+        {/* Left Column - Media */}
+        <div className="pdf-media-column">
+          {/* Video at top if available */}
+          {hasVideo && (
+            <div className="pdf-video-section">
+              <div className="pdf-video-card">
+                {isYouTube(videoItem.youtube || videoItem.youtubeId || videoItem.video) ? (
+                  <iframe
+                    src={toYouTubeEmbedUrl(videoItem.youtube || videoItem.youtubeId || videoItem.video)}
+                    title={videoItem.title || 'YouTube video'}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video
+                    controls
+                    preload="metadata"
+                    playsInline
+                    poster={videoItem.poster || videoItem.image || undefined}
+                  >
+                    <source src={videoItem.video} />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+              </div>
+              <div className="pdf-video-info">
+                <h3 className="pdf-video-title">{videoItem.title}</h3>
+                <div className="pdf-video-meta">
+                  {(videoItem.year || '') + 
+                   (videoItem.medium ? (videoItem.year ? ' • ' : '') + videoItem.medium : '') + 
+                   (videoItem.size ? ' • ' + videoItem.size : '')}
+                </div>
               </div>
             </div>
-          </article>
-        </section>
-      )}
-      
-      {photos.length > 0 && hasDescriptions ? (
-        <InteractiveScroll
-          headerTitle="Process & Gallery"
-          headerSubtitle="Scroll through the creative journey behind this project"
-          items={interactiveItems}
-          className="project-interactive-scroll"
-        />
-      ) : photos.length > 0 && (
-        <section className="project-gallery">
-          <h2>Process & Gallery</h2>
-          {hasVideo ? (
-            <PhotoCarousel items={photos} />
-          ) : (
-            <GalleryGrid items={photos} />
           )}
-        </section>
+          
+          {/* If no video, show first photo enlarged */}
+          {!hasVideo && photos.length > 0 && (
+            <div className="pdf-hero-section">
+              <div 
+                className="pdf-hero-photo"
+                onClick={() => openLightbox(photos[0], 0)}
+              >
+                <img 
+                  src={photos[0].image} 
+                  alt={photos[0].title}
+                />
+              </div>
+              {photos[0].title && (
+                <div className="pdf-hero-info">
+                  <h3 className="pdf-hero-title">{photos[0].title}</h3>
+                </div>
+              )}
+            </div>
+          )}
+          
+          {/* Two-column alternating photo grid (skip first if no video) */}
+          {(() => {
+            const gridPhotos = hasVideo ? photos : photos.slice(1)
+            return gridPhotos.length > 0 && (
+              <div className="pdf-photo-grid">
+                <div className="pdf-photo-column pdf-photo-column-left">
+                  {gridPhotos.filter((_, i) => i % 2 === 0).map((photo) => {
+                    const originalIndex = photos.indexOf(photo)
+                    return (
+                      <div 
+                        key={photo.id} 
+                        className="pdf-photo-item"
+                        onClick={() => openLightbox(photo, originalIndex)}
+                      >
+                        <img 
+                          src={photo.image} 
+                          alt={photo.title}
+                          loading="lazy"
+                        />
+                        {photo.title && (
+                          <div className="pdf-photo-caption">
+                            {photo.title}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+                <div className="pdf-photo-column pdf-photo-column-right">
+                  {gridPhotos.filter((_, i) => i % 2 === 1).map((photo) => {
+                    const originalIndex = photos.indexOf(photo)
+                    return (
+                      <div 
+                        key={photo.id} 
+                        className="pdf-photo-item"
+                        onClick={() => openLightbox(photo, originalIndex)}
+                      >
+                        <img 
+                          src={photo.image} 
+                          alt={photo.title}
+                          loading="lazy"
+                        />
+                        {photo.title && (
+                          <div className="pdf-photo-caption">
+                            {photo.title}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            )
+          })()}
+        </div>
+        
+        {/* Right Column - Plain Text */}
+        <div className="pdf-text-column">
+          <h1 className="pdf-title">{title}</h1>
+          <p className="pdf-subtitle">
+            {items.length} piece{items.length !== 1 ? 's' : ''}
+            {hasVideo && ' • Includes video'}
+          </p>
+          
+          {galleryDescription && (
+            <p className="pdf-description">{galleryDescription}</p>
+          )}
+          
+          {itemsWithDescriptions.length > 0 && (
+            <div className="pdf-plain-text">
+              {itemsWithDescriptions.map((item, index) => (
+                <p key={item.id} className="pdf-process-text">
+                  <strong>{item.title}</strong> — {item.description}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      
+      {/* Lightbox */}
+      {lightboxPhoto && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <button className="lightbox-close" onClick={closeLightbox}>×</button>
+          <button className="lightbox-nav lightbox-prev" onClick={goToPrev}>‹</button>
+          <div className="lightbox-content">
+            <img src={lightboxPhoto.image} alt={lightboxPhoto.title} />
+            {lightboxPhoto.title && (
+              <p className="lightbox-caption">{lightboxPhoto.title}</p>
+            )}
+            <p className="lightbox-counter">{lightboxIndex + 1} / {photos.length}</p>
+          </div>
+          <button className="lightbox-nav lightbox-next" onClick={goToNext}>›</button>
+        </div>
       )}
     </div>
   )
