@@ -41,9 +41,9 @@ img { max-width: 100%; display: block; }
 
 .nav-brand {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 2px;
+  gap: 12px;
 }
 
 .nav-social-icons {

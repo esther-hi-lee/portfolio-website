@@ -22,11 +22,22 @@ export default function Gallery() {
           >
             <div className="collection-thumbnail">
               {category.thumbnail ? (
-                <img 
-                  src={category.thumbnail} 
-                  alt={category.title}
-                  loading="lazy"
-                />
+                category.thumbnail.toLowerCase().endsWith('.mp4') ? (
+                  <video 
+                    src={category.thumbnail} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    preload="auto"
+                  />
+                ) : (
+                  <img 
+                    src={category.thumbnail} 
+                    alt={category.title}
+                    loading="lazy"
+                  />
+                )
               ) : (
                 <div className="collection-placeholder">
                   <span>🎨</span>

@@ -3,6 +3,7 @@
     "id": "1",
     "title": "Process I",
     "image":   "assets/_A_Hungry_Hamster_Side_Scroller_Game_(Piece_1)/process pic hamster1.png",
+    "thumbnail": "/assets/thumbnails/hamster.mp4",
     "category": "\"A Hungry Hamster\" Side Scroller Game"
   },
 
@@ -31,6 +32,7 @@
     "id": "5",
     "title": "Process I",
     "image": "assets/_Drowsy_Cinematic_Nature_Scene_(Piece_2)/process pic nature scene 1.png",
+    "thumbnail": "/assets/thumbnails/drowsy.mp4",
     "category": "\"Drowsy\" Cinematic Nature Scene"
   },
   {
@@ -208,7 +210,7 @@
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/G1jacIYfjhc?si=0VcYUecFsdO12Kvy",
-    "thumbnail": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 3.png",
+    "thumbnail": "/assets/thumbnails/reminisce.mp4",
     "category": "Reminisce"
   },
   {
