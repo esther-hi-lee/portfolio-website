@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AutoScroll items={artworks} height={500} speed={0.075} pauseOnHover={false} fadeOnScroll={true} />
+      {/* <AutoScroll items={artworks} height={500} speed={0.075} pauseOnHover={false} fadeOnScroll={true} /> */}
       <MediaMosaic />
     </>
   )

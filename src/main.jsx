@@ -11,6 +11,7 @@ import AboutPage from './pages/AboutPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import RouterErrorPage from './components/RouterErrorPage.jsx'
+import { ThemeProvider } from './context/ThemeContext.jsx'
 
 const router = createHashRouter([
   {
@@ -30,7 +31,9 @@ const router = createHashRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </ErrorBoundary>
   </React.StrictMode>
 )

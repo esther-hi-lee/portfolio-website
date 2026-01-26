@@ -77,7 +77,8 @@
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  background: #fff;
+  background: var(--card-bg);
+  color: var(--text);
 }
 
 .form-group input:focus,
@@ -100,7 +101,7 @@
 .submit-btn {
   padding: 0.875rem 2rem;
   background: var(--text);
-  color: #fff;
+  color: var(--bg);
   border: none;
   font-size: 1rem;
   font-weight: 500;

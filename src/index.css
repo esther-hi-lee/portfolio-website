@@ -1,9 +1,22 @@
 
 :root {
   --bg: #ffffff;
+  --bg-secondary: #f9f9f9;
   --text: #111111;
   --muted: #777777;
   --border: #e5e5e5;
+  --card-bg: #ffffff;
+  --hover-bg: #f3f3f3;
+}
+
+:root.dark {
+  --bg: #121212;
+  --bg-secondary: #1e1e1e;
+  --text: #f0f0f0;
+  --muted: #a0a0a0;
+  --border: #333333;
+  --card-bg: #1e1e1e;
+  --hover-bg: #2a2a2a;
 }
 
 * { box-sizing: border-box; }
@@ -57,6 +70,11 @@ img { max-width: 100%; display: block; }
   padding: 2px;
 }
 
+.nav nav {
+  display: flex;
+  align-items: center;
+}
+
 .nav a {
   margin-left: 1rem;
   padding: .25rem .5rem;
@@ -64,7 +82,25 @@ img { max-width: 100%; display: block; }
 }
 
 .nav a.active {
-  background: #f3f3f3;
+  background: var(--hover-bg);
+}
+
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dark-mode-toggle:hover {
+  background: var(--hover-bg);
 }
 
 .footer {
@@ -108,7 +144,7 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
-  background: #fff;
+  background: var(--card-bg);
 }
 
 .card-body {
