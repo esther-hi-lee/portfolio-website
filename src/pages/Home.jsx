@@ -1,18 +1,28 @@
 import React from 'react'
 import Hero from '../components/Hero.jsx'
-import GalleryGrid from '../components/GalleryGrid.jsx'
-import artworks from '../data/artworks.json'
-import AutoScroll from '../components/AutoScroll.jsx'
 import MediaMosaic from '../components/MediaMosaic.jsx'
+import Gallery from './Gallery.jsx'
+import AboutPage from './AboutPage.jsx'
+import ContactPage from './ContactPage.jsx'
 
 export default function Home() {
-  // Show first 6 as a teaser
-  const featured = artworks.slice(0, 6)
   return (
     <>
-      <Hero />
-      {/* <AutoScroll items={artworks} height={500} speed={0.075} pauseOnHover={false} fadeOnScroll={true} /> */}
-      <MediaMosaic />
+      <section id="home" className="section">
+        <Hero />
+      </section>
+
+      <section id="projects" className="section">
+        <Gallery />
+      </section>
+
+      <section id="about" className="section">
+        <AboutPage />
+      </section>
+
+      <section id="contact" className="section">
+        <ContactPage />
+      </section>
     </>
   )
 }

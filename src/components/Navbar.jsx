@@ -1,17 +1,26 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext.jsx'
-
-const linkClass = ({ isActive }) => isActive ? 'active' : ''
 
 export default function Navbar() {
   const { darkMode, toggleDarkMode } = useTheme()
+
+  const handleNavClick = (e, id) => {
+    e.preventDefault()
+    const el = document.getElementById(id)
+    if (!el) return
+    const nav = document.querySelector('.nav')
+    const navHeight = nav ? nav.offsetHeight : 64
+    const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 8
+    window.scrollTo({ top, behavior: 'smooth' })
+    // update hash without jumping
+    history.replaceState(null, '', `#${id}`)
+  }
   
   return (
     <header className="nav">
       <div className="container nav-inner">
         <div className="nav-brand">
-          <Link to="/" style={{fontWeight:700, textDecoration:'none', color:'inherit'}}>Esther Hyo In Lee</Link>
+          <a href="#home" style={{fontWeight:700, textDecoration:'none', color:'inherit'}}>Esther Hyo In Lee</a>
           <div className="nav-social-icons">
             <a href="https://www.instagram.com/everythingsprecious/" aria-label="Instagram" className="social-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -30,10 +39,10 @@ export default function Navbar() {
           </div>
         </div>
         <nav>
-          <NavLink to="/" className={linkClass} end>Home</NavLink>
-          <NavLink to="/gallery" className={linkClass}>Projects</NavLink>
-          <NavLink to="/about" className={linkClass}>About</NavLink>
-          <NavLink to="/contact" className={linkClass}>Contact</NavLink>
+          <a href="#home" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
+          <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
+          <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About</a>
+          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
           <button 
             onClick={toggleDarkMode} 
             className="dark-mode-toggle"

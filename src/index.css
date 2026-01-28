@@ -28,6 +28,20 @@ body {
   color: var(--text);
 }
 
+/* Smooth scrolling for in-page navigation */
+html { scroll-behavior: smooth; }
+
+/* Anchor offset so sections don't hide behind sticky nav */
+.section {
+  scroll-margin-top: 80px;
+  padding: 3rem 0;
+}
+
+/* Reduce top padding specifically for the home section to remove blank gap */
+#home.section {
+  padding-top: 0;
+}
+
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
@@ -37,12 +51,21 @@ img { max-width: 100%; display: block; }
   padding: 0 1rem;
 }
 
+/* Make nav fixed and ensure content is offset so it isn't covered */
+main.container {
+  padding-top: 80px;
+}
+
 .nav {
   border-bottom: 1px solid var(--border);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   background: var(--bg);
-  z-index: 10;
+  z-index: 1000;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
 }
 
 .nav-inner {
@@ -162,7 +185,7 @@ img { max-width: 100%; display: block; }
 }
 
 .hero {
-  padding: 3rem 0 2rem 0;
+  padding: 1rem 0 2rem 0;
 }
 
 .hero h1 {

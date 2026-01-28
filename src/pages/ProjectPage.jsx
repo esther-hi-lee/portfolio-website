@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import artworks from '../data/artworks.json'
 import { isYouTube, toYouTubeEmbedUrl } from '../utils/media.js'
 import './ProjectPage.css'
@@ -68,7 +68,7 @@ export default function ProjectPage() {
   if (!projectData) {
     return (
       <div className="container" style={{ paddingTop: '2rem' }}>
-        <Link to="/gallery" className="back-link">← Back to Projects</Link>
+        <a href="#projects" className="back-link">← Back to Projects</a>
         <h2>Project Not Found</h2>
         <p>The project you're looking for doesn't exist.</p>
       </div>
@@ -112,7 +112,7 @@ export default function ProjectPage() {
 
   return (
     <div className="project-page-wrapper">
-      <Link to="/gallery" className="pdf-back-link">← Back to Projects</Link>
+      <a href="#projects" className="pdf-back-link">← Back to Projects</a>
       
       <div className="pdf-layout">
         {/* Left Column - Media */}
