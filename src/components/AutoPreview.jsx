@@ -7,9 +7,10 @@ function isVideo(url) {
 }
 
 export default function AutoPreview() {
+  const base = (import.meta && import.meta.env && import.meta.env.BASE_URL) || '/'
   const thumbs = artworks
     .filter(a => a.thumbnail)
-    .map(a => (a.thumbnail.startsWith('/') ? a.thumbnail : `/${a.thumbnail}`))
+    .map(a => `${base}${a.thumbnail.replace(/^\//, '')}`)
 
   const [index, setIndex] = useState(0)
   const [visible, setVisible] = useState(true)
