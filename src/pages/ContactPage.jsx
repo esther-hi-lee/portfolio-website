@@ -22,23 +22,29 @@ export default function ContactPage() {
     e.preventDefault()
     setStatus('sending')
     
-    // TODO: Replace with your actual Formspree endpoint
-    // Example: https://formspree.io/f/your-form-id
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
-    
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xykjdpny'
+
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
       })
       
       if (response.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', subject: '', message: '' })
       } else {
+        // try to parse JSON error details from Formspree
+        try { await response.json() } catch (e) {}
         setStatus('error')
       }
     } catch (error) {

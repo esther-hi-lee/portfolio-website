@@ -40,8 +40,8 @@ export default function Navbar() {
         </div>
         <nav>
           <a href="#home" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
-          <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About</a>
+          <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
           <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
           <button 
             onClick={toggleDarkMode} 

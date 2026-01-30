@@ -72,6 +72,7 @@ export default function AutoPreview() {
           <img src={src} alt="gallery thumbnail" className="media" />
         )}
       </div>
+      <div className="auto-preview-title">Esther H Lee</div>
     </div>
   )
 }

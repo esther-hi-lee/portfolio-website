@@ -261,6 +261,17 @@ export default function ProjectPage() {
             {lightboxPhoto.title && (
               <p className="lightbox-caption">{lightboxPhoto.title}</p>
             )}
+              {lightboxPhoto.subcaption && (
+                <div className="lightbox-credits">
+                  {Array.isArray(lightboxPhoto.subcaption) ? (
+                    lightboxPhoto.subcaption.map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))
+                  ) : (
+                    <p>{lightboxPhoto.subcaption}</p>
+                  )}
+                </div>
+              )}
             <p className="lightbox-counter">{lightboxIndex + 1} / {photos.length}</p>
           </div>
           <button className="lightbox-nav lightbox-next" onClick={goToNext}>›</button>

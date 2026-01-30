@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { getCategoryInfo } from './ProjectPage.jsx'
 import './Gallery.css'
+import { isYouTube, toYouTubeEmbedUrl } from '../utils/media.js'
 
 function ProjectGallery({ category, expanded, onClose }) {
   // Inline the main content from ProjectPage, but without router links
@@ -42,7 +43,7 @@ function ProjectGallery({ category, expanded, onClose }) {
               <div className="pdf-video-card">
                 {videoItem.youtube || videoItem.youtubeId ? (
                   <iframe
-                    src={`https://www.youtube.com/embed/${videoItem.youtubeId || videoItem.youtube}`}
+                    src={toYouTubeEmbedUrl(videoItem.youtube || videoItem.youtubeId)}
                     title={videoItem.title || 'YouTube video'}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
@@ -170,6 +171,17 @@ function ProjectGallery({ category, expanded, onClose }) {
             {lightboxPhoto.title && (
               <p className="lightbox-caption">{lightboxPhoto.title}</p>
             )}
+              {lightboxPhoto.subcaption && (
+                <div className="lightbox-credits">
+                  {Array.isArray(lightboxPhoto.subcaption) ? (
+                    lightboxPhoto.subcaption.map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))
+                  ) : (
+                    <p>{lightboxPhoto.subcaption}</p>
+                  )}
+                </div>
+              )}
             <p className="lightbox-counter">{lightboxIndex + 1} / {photos.length}</p>
           </div>
           <button className="lightbox-nav lightbox-next" onClick={goToNext}>›</button>
