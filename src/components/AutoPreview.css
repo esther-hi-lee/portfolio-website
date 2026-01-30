@@ -1,9 +1,17 @@
 .auto-preview{
   display:block;
   width:100vw;
-  margin-left:calc(50% - 50vw);
-  text-decoration:none;
+  /* full-bleed: offset the parent container so left edge aligns with viewport */
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   position:relative;
+  /* keep component within viewport, but allow internal padding so content clears the fixed nav */
+  max-height: 100vh;
+  overflow: hidden;
+  /* pull up to cancel main.container padding-top so the preview sits flush */
+  margin-top: -96px;
+  /* ensure media starts below the fixed navbar */
+  padding-top: 90px;
 }
 .media-wrap{
   width:100%;
@@ -16,6 +24,7 @@
   transition:opacity .36s ease-in-out, transform .36s ease-in-out;
   opacity:0;
   transform:scale(0.99);
+  max-height: calc(100vh - 96px);
 }
 .media-wrap.visible{
   opacity:1;
