@@ -12,12 +12,12 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section id="about" className="section">
-        <AboutPage />
-      </section>
-
       <section id="projects" className="section">
         <Gallery />
+      </section>
+
+      <section id="about" className="section">
+        <AboutPage />
       </section>
 
       <section id="contact" className="section">

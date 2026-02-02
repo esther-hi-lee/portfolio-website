@@ -56,9 +56,6 @@ export default function ContactPage() {
     <div className="contact-page">
       <header className="contact-header">
         <h1>Get in Touch</h1>
-        <p className="contact-subtitle">
-          Have a question or want to work together? Send me a message!
-        </p>
       </header>
 
       <div className="contact-content">
@@ -70,7 +67,6 @@ export default function ContactPage() {
           </p>
           <p className="contact-note">
             Feel free to reach out via email or use the contact form. 
-            I'll get back to you as soon as possible!
           </p>
         </div>
 

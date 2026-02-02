@@ -26,7 +26,9 @@
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/qYrkGiGBVqo?si=gNVjbFaTaeEVLFbh",
-    "category": "\"A Hungry Hamster\" Side Scroller Game"
+    "category": "\"A Hungry Hamster\" Side Scroller Game",
+    "galleryDescription": "Exploration of unreal engine blueprint mechanics and side scroller game design.",
+    "programs": "Unreal Engine, Maya"
   },
   {
     "id": "5",
@@ -54,12 +56,13 @@
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/DyFhIXq863I?si=9YnLuOJGBcadMG-i",
-    "category": "\"Drowsy\" Cinematic Nature Scene"
+    "category": "\"Drowsy\" Cinematic Nature Scene",
+    "galleryDescription": "Level design based on a Google Earth location using assets from Unreal Engine.",
+    "programs": "Unreal Engine, Adobe After Effects"
   },
   {
     "id": "P3-process-1",
     "title": "Process I",
-    "description": "Initial concept gathering and reference collection. The cart concept art by Brian Taylor and scene concept art by Mick Jundt served as the foundation for this stylized 3D project.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 1.png",
     "thumbnail": "assets/Piece Thumbnails for Front Page!!!!/Resting Point Thumbnail.png",
     "subcaption": [
@@ -67,172 +70,174 @@
       "Cart concept art by: Brain Taylor",
       "Scene concept art by: Mick Jundt"
     ],
-    "category": "Resting Point",
-    "galleryDescription": "\"Resting Point\" is a stylized 3D environment project inspired by concept art from Brian Taylor and Mick Jundt. This project explores the creation of a cohesive fantasy scene through careful modeling, texturing, and lighting techniques. The goal was to translate 2D concept art into a fully realized 3D space while maintaining the original artistic vision and charm."
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-2",
     "title": "Process II",
-    "description": "Beginning the 3D modeling phase, establishing the basic forms and proportions of the scene elements while maintaining the stylized aesthetic from the concept art.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 2.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-3",
     "title": "Process III",
-    "description": "Refining the geometry and adding more details to the 3D models. Focus on creating clean topology that supports the stylized look.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 3.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-process-6",
     "title": "Process VI",
-    "description": "Lighting setup and atmospheric effects. Establishing mood and depth through careful light placement and color grading.",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/process pic 6.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-2",
     "title": "Cart Shot I",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 2.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-3",
     "title": "Cart Shot II",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 3.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-5",
     "title": "Cart Shot III",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 5.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-6",
     "title": "Cart Shot IV",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 6.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-7",
     "title": "Cart Shot V",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 7.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-8",
     "title": "Cart Shot VI",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 8.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-cart-9",
     "title": "Cart Shot VII",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Cart 3D Model Shots/cart 9.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-wall-1",
     "title": "Wall Shot I",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 1.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-wall-2",
     "title": "Wall Shot II",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 2.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-wall-3",
     "title": "Wall Shot III",
     "image": "assets/_Resting_Point_Scene-_Stylized_3D_Models_(Piece_3)/Wall 3D Model Shots/wall 3.png",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene"
   },
   {
     "id": "P3-video",
-    "title": "Resting Point",
+    "title": "\"Resting Point\" Scene",
     "year": "2025",
     "medium": "Video",
     "size": "",
     "youtube": "https://youtu.be/rdorrgXbOwM?si=cUzDzrIVAu5HzVfy",
-    "category": "Resting Point"
+    "category": "\"Resting Point\" Scene",
+    "galleryDescription": "Stylized scene created based on a model and concept art from multiple artists using both self-made models and assets from Unreal Engine. Exploration of designing and texturing stylized models.",
+    "programs": "Maya, Substance Painter, Unreal Engine"
   },
   {
     "id": "P7-video",
-    "title": "Let's Make Breakfast",
+    "title": "Let's Make Breakfast!",
     "year": "2026",
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/GCB2cDS8UxA?si=-XF4hCdn62c4Hh10",
     "thumbnail": "assets/thumbnails/Let_s Make Breakfast Thumbnail.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype",
+    "galleryDescription": "Educational children’s game prototype created to explore the intersectionality of play and learning. Learning points were implemented using puzzles and mini games.",
+    "programs": "Unreal Engine, Maya, Adobe Photoshop, Adobe Substance Painter, Adobe After Effects"
   },
   {
     "id": "P7-overall",
     "title": "Game Level Overall Shot",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Game Level Overall Shot.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P7-platform-1",
     "title": "Level Platform Close up Shot 1",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Level Platform Close up Shot 1.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P7-platform-2",
     "title": "Level Platform Close Up Shot 2",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Level Platform Close Up Shot 2.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P7-mechanic-1",
     "title": "Mini Game Mechanic 1",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Mini Game Mechanic 1.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P7-mechanic-2",
     "title": "Mini Game Mechanic 2",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Mini Game Mechanic 2.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P7-mechanic-3",
     "title": "Mini Game Mechanic 3",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Mini Game Mechanic 3.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P7-process-1",
     "title": "Process I",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Process 1.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P7-process-2",
     "title": "Process II",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Process 2.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P7-process-3",
     "title": "Process III",
     "image": "assets/_Let_s Make_Breakfast!_Educational_Children_s_Game_Prototype_(Piece_7)/Process 3.png",
-    "category": "Let's Make Breakfast"
+    "category": "\"Lets Make Breakfast!\" Educational Children’s Game Prototype"
   },
   {
     "id": "P5-video",
-    "title": "Reminisce",
+    "title": "\"Reminisce\" City Scene",
     "year": "",
     "medium": "Video",
     "size": "HD",
     "youtube": "https://youtu.be/G1jacIYfjhc?si=0VcYUecFsdO12Kvy",
     "thumbnail": "assets/thumbnails/reminisce.mp4",
-    "category": "Reminisce"
+    "category": "\"Reminisce\" City Scene",
+    "galleryDescription": "Level design based on the concept of creating a city environment using both self-made models and assets from Unreal Engine.",
+    "programs": "Unreal Engine, Maya, Adobe After Effects"
   },
   {
     "id": "P5-process-1",
@@ -241,7 +246,7 @@
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 1.png",
-    "category": "Reminisce"
+    "category": "\"Reminisce\" City Scene"
   },
   {
     "id": "P5-process-2",
@@ -250,7 +255,7 @@
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 2.png",
-    "category": "Reminisce"
+    "category": "\"Reminisce\" City Scene"
   },
   {
     "id": "P5-process-3",
@@ -259,14 +264,16 @@
     "medium": "Work-in-Progress",
     "size": "",
     "image": "assets/_Reminisce_City_Scene_(Piece_5)/process pic city 3.png",
-    "category": "Reminisce"
+    "category": "\"Reminisce\" City Scene"
   },
   {
     "id": "P6-slide-first",
     "title": "Title Slide",
     "image": "assets/_Nerve_Game_Concept_Group_Project_(Piece_6)/nerve slides FIRST.png",
     "thumbnail": "assets/Piece Thumbnails for Front Page!!!!/Nerve Thumbnail.png",
-    "category": "\"Nerve\" Game Concept"
+    "category": "\"Nerve\" Game Concept",
+    "galleryDescription": "Game concept pitch based on a main character with a disability. Created and presented in a team.",
+    "programs": "Maya, Adobe Photoshop"
   },
   {
     "id": "P6-slide-1",

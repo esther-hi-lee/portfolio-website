@@ -82,6 +82,11 @@ main.container {
   gap: 12px;
 }
 
+/* Increase the brand/name font size by roughly 5pt for better prominence */
+.nav-brand a {
+  font-size: calc(1rem + 5pt);
+}
+
 .nav-social-icons {
   display: flex;
   justify-content: center;
