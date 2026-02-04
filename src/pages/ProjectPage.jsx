@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useParams } from 'react-router-dom'
 import artworks from '../data/artworks.json'
 import { isYouTube, toYouTubeEmbedUrl } from '../utils/media.js'
@@ -79,6 +80,10 @@ export default function ProjectPage() {
   const videoItem = items.find(i => i.video || i.youtube || i.youtubeId)
   const photos = items.filter(i => !(i.video || i.youtube || i.youtubeId))
   const hasVideo = Boolean(videoItem)
+  
+  // Get programs from any item that has it - check all items in the category
+  const programsItem = items.find(item => item.programs)
+  const programs = programsItem?.programs
   
   // Get items with descriptions for the text column
   const itemsWithDescriptions = items.filter(item => item.description && item.description.trim())
@@ -239,6 +244,12 @@ export default function ProjectPage() {
             <p className="pdf-description">{galleryDescription}</p>
           )}
           
+          {programs && (
+            <p className="pdf-programs">
+              <strong>Programs Used:</strong> {programs}
+            </p>
+          )}
+          
           {itemsWithDescriptions.length > 0 && (
             <div className="pdf-plain-text">
               {itemsWithDescriptions.map((item, index) => (
@@ -252,30 +263,31 @@ export default function ProjectPage() {
       </div>
       
       {/* Lightbox */}
-      {lightboxPhoto && (
+      {lightboxPhoto && createPortal(
         <div className="lightbox-overlay" onClick={closeLightbox}>
-          <button className="lightbox-close" onClick={closeLightbox}>×</button>
-          <button className="lightbox-nav lightbox-prev" onClick={goToPrev}>‹</button>
-          <div className="lightbox-content">
+          <button className="lightbox-close" onClick={(e) => { e.stopPropagation(); closeLightbox() }}>×</button>
+          <button className="lightbox-nav lightbox-prev" onClick={(e) => { e.stopPropagation(); goToPrev(e) }}>‹</button>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <img src={lightboxPhoto.image} alt={lightboxPhoto.title} />
             {lightboxPhoto.title && (
               <p className="lightbox-caption">{lightboxPhoto.title}</p>
             )}
-              {lightboxPhoto.subcaption && (
-                <div className="lightbox-credits">
-                  {Array.isArray(lightboxPhoto.subcaption) ? (
-                    lightboxPhoto.subcaption.map((line, i) => (
-                      <p key={i}>{line}</p>
-                    ))
-                  ) : (
-                    <p>{lightboxPhoto.subcaption}</p>
-                  )}
-                </div>
-              )}
+            {lightboxPhoto.subcaption && (
+              <div className="lightbox-credits">
+                {Array.isArray(lightboxPhoto.subcaption) ? (
+                  lightboxPhoto.subcaption.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))
+                ) : (
+                  <p>{lightboxPhoto.subcaption}</p>
+                )}
+              </div>
+            )}
             <p className="lightbox-counter">{lightboxIndex + 1} / {photos.length}</p>
           </div>
-          <button className="lightbox-nav lightbox-next" onClick={goToNext}>›</button>
-        </div>
+          <button className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); goToNext(e) }}>›</button>
+        </div>,
+        document.body
       )}
     </div>
   )

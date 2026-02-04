@@ -1,5 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { getCategoryInfo } from './ProjectPage.jsx'
 import './Gallery.css'
 import { isYouTube, toYouTubeEmbedUrl } from '../utils/media.js'
@@ -11,6 +12,11 @@ function ProjectGallery({ category, expanded, onClose }) {
   const photos = items.filter(i => !(i.video || i.youtube || i.youtubeId))
   const hasVideo = Boolean(videoItem)
   const itemsWithDescriptions = items.filter(item => item.description && item.description.trim())
+  
+  // Get programs from any item that has it
+  const programsItem = items.find(item => item.programs)
+  const programs = programsItem?.programs
+  
   const [lightboxPhoto, setLightboxPhoto] = useState(null)
   const [lightboxIndex, setLightboxIndex] = useState(0)
   const openLightbox = (photo, index) => {
@@ -151,6 +157,11 @@ function ProjectGallery({ category, expanded, onClose }) {
           {galleryDescription && (
             <p className="pdf-description">{galleryDescription}</p>
           )}
+          {programs && (
+            <p className="pdf-programs">
+              <strong>Programs Used:</strong> {programs}
+            </p>
+          )}
           {itemsWithDescriptions.length > 0 && (
             <div className="pdf-plain-text">
               {itemsWithDescriptions.map((item, index) => (
@@ -162,30 +173,31 @@ function ProjectGallery({ category, expanded, onClose }) {
           )}
         </div>
       </div>
-      {lightboxPhoto && (
+      {lightboxPhoto && createPortal(
         <div className="lightbox-overlay" onClick={closeLightbox}>
-          <button className="lightbox-close" onClick={closeLightbox}>×</button>
-          <button className="lightbox-nav lightbox-prev" onClick={goToPrev}>‹</button>
-          <div className="lightbox-content">
+          <button className="lightbox-close" onClick={(e) => { e.stopPropagation(); closeLightbox() }}>×</button>
+          <button className="lightbox-nav lightbox-prev" onClick={(e) => { e.stopPropagation(); goToPrev(e) }}>‹</button>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <img src={lightboxPhoto.image} alt={lightboxPhoto.title} />
             {lightboxPhoto.title && (
               <p className="lightbox-caption">{lightboxPhoto.title}</p>
             )}
-              {lightboxPhoto.subcaption && (
-                <div className="lightbox-credits">
-                  {Array.isArray(lightboxPhoto.subcaption) ? (
-                    lightboxPhoto.subcaption.map((line, i) => (
-                      <p key={i}>{line}</p>
-                    ))
-                  ) : (
-                    <p>{lightboxPhoto.subcaption}</p>
-                  )}
-                </div>
-              )}
+            {lightboxPhoto.subcaption && (
+              <div className="lightbox-credits">
+                {Array.isArray(lightboxPhoto.subcaption) ? (
+                  lightboxPhoto.subcaption.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))
+                ) : (
+                  <p>{lightboxPhoto.subcaption}</p>
+                )}
+              </div>
+            )}
             <p className="lightbox-counter">{lightboxIndex + 1} / {photos.length}</p>
           </div>
-          <button className="lightbox-nav lightbox-next" onClick={goToNext}>›</button>
-        </div>
+          <button className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); goToNext(e) }}>›</button>
+        </div>,
+        document.body
       )}
     </div>
   )
@@ -199,6 +211,27 @@ export default function Gallery() {
   useEffect(() => {
     if (expanded && expandedRef.current) {
       expandedRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [expanded])
+
+  // When a collection is expanded, force the projects section to full
+  // opacity so the expanded dropdown doesn't inherit a lowered opacity
+  // from the scroll-linked effect. Revert when closed.
+  useEffect(() => {
+    const projectsSection = document.getElementById('projects')
+    if (!projectsSection) return
+    if (expanded) {
+      projectsSection.style.setProperty('--section-opacity', '1')
+      projectsSection.style.setProperty('--section-translate', '0px')
+    } else {
+      projectsSection.style.removeProperty('--section-opacity')
+      projectsSection.style.removeProperty('--section-translate')
+    }
+    return () => {
+      if (projectsSection) {
+        projectsSection.style.removeProperty('--section-opacity')
+        projectsSection.style.removeProperty('--section-translate')
+      }
     }
   }, [expanded])
 

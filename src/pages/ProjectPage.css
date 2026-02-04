@@ -157,6 +157,22 @@
   margin: 0 0 2rem 0;
 }
 
+.pdf-programs {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin: 0 0 1.25rem 0;
+}
+
+.pdf-programs strong {
+  font-weight: 600;
+}
+
+.pdf-programs strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .pdf-plain-text {
   line-height: 1.8;
 }

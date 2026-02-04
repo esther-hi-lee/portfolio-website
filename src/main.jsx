@@ -5,6 +5,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import Home from './pages/Home.jsx'
+import ProjectPage from './pages/ProjectPage.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import RouterErrorPage from './components/RouterErrorPage.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
@@ -19,7 +20,8 @@ const router = createHashRouter([
         { path: 'home', element: <Home /> },
         { path: 'about', element: <Home /> },
         { path: 'projects', element: <Home /> },
-        { path: 'contact', element: <Home /> }
+        { path: 'contact', element: <Home /> },
+        { path: 'project/:slug', element: <ProjectPage /> }
     ]
   }
 ])
