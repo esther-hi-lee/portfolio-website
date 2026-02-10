@@ -266,6 +266,14 @@ export default function Home() {
     }
   }, [selectedProject])
 
+  // On mount, reset any native scroll offset caused by hash fragments
+  useEffect(() => {
+    // Fix browser's native hash scroll breaking layout
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [])
+
   return (
     <div className="scroll-snap-container" ref={containerRef}>
       <section id="home" className="full-screen-section">
