@@ -9,6 +9,7 @@ import { isYouTube, toYouTubeEmbedUrl } from '../utils/media.js'
 
 /* ─── Full-screen project gallery section ─── */
 function ProjectGallerySection({ category, onClose }) {
+  const base = (import.meta && import.meta.env && import.meta.env.BASE_URL) || '/'
   const { title, items, galleryDescription } = category
   const videoItem = items.find(i => i.video || i.youtube || i.youtubeId)
   const photos = items.filter(i => !(i.video || i.youtube || i.youtubeId))
