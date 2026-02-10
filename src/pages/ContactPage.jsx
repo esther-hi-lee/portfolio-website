@@ -53,13 +53,13 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="contact-page">
-      <header className="contact-header">
+    <div className="contact-page-fullscreen">
+      <header className="contact-header-fullscreen">
         <h1>Get in Touch</h1>
       </header>
 
-      <div className="contact-content">
-        <div className="contact-info">
+      <div className="contact-content-fullscreen">
+        <div className="contact-info-fullscreen">
           <h2>Contact Info</h2>
           <p>
             <strong>Email:</strong><br />
@@ -70,7 +70,7 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form-fullscreen contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
@@ -117,7 +117,7 @@ export default function ContactPage() {
               value={formData.message}
               onChange={handleChange}
               placeholder="Your message..."
-              rows="6"
+              rows="4"
               required
             />
           </div>

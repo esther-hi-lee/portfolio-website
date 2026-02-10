@@ -3,21 +3,24 @@ import React from 'react'
 export default function Navbar() {
   const handleNavClick = (e, id) => {
     e.preventDefault()
-    const el = document.getElementById(id)
-    if (!el) return
-    const nav = document.querySelector('.nav')
-    const navHeight = nav ? nav.offsetHeight : 64
-    const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 8
-    window.scrollTo({ top, behavior: 'smooth' })
-    // update hash without jumping
+    const targetSection = document.getElementById(id)
+    if (!targetSection) return
+    
+    // Use scrollIntoView which works perfectly with scroll-snap
+    targetSection.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    })
+    
+    // Update URL hash without jumping
     history.replaceState(null, '', `#${id}`)
   }
   
   return (
     <header className="nav">
-      <div className="container nav-inner">
+      <div className="nav-inner">
         <div className="nav-brand">
-          <a href="#home" style={{fontWeight:800, textDecoration:'none', color:'inherit'}}>Esther Hyo In Lee</a>
+          <a href="#home" onClick={(e) => handleNavClick(e, 'home')} style={{fontWeight:800, textDecoration:'none', color:'inherit'}}>Esther Hyo In Lee</a>
         </div>
         <nav>
           <a href="#home" onClick={(e) => handleNavClick(e, 'home')}>Home</a>

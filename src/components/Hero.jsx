@@ -4,12 +4,17 @@ import AutoPreview from './AutoPreview.jsx'
 
 export default function Hero() {
   return (
-    <section className="hero">
-      <div className="container">
-        <div className="preview-container" style={{marginTop: 0}}>
-          <AutoPreview />
-        </div>
+    <div className="hero" style={{
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden'
+    }}>
+      <div style={{width: '100%', height: '100%'}}>
+        <AutoPreview />
       </div>
-    </section>
+    </div>
   )
 }

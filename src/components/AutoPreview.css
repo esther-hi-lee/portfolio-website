@@ -1,30 +1,22 @@
 .auto-preview{
-  display:block;
-  width:100vw;
-  /* full-bleed: offset the parent container so left edge aligns with viewport */
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
   position:relative;
-  /* keep component within viewport, but allow internal padding so content clears the fixed nav */
-  max-height: 100vh;
   overflow: hidden;
-  /* pull up to cancel main.container padding-top so the preview sits flush */
-  margin-top: -96px;
-  /* ensure media starts below the fixed navbar */
-  padding-top: 90px;
+  background:#000;
 }
 .media-wrap{
   width:100%;
-  aspect-ratio: 16 / 9;
-  background:#000;
-  overflow:hidden;
+  height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
   transition:opacity .36s ease-in-out, transform .36s ease-in-out;
   opacity:0;
   transform:scale(0.99);
-  max-height: calc(100vh - 96px);
 }
 .media-wrap.visible{
   opacity:1;
@@ -37,12 +29,6 @@
   display:block;
 }
 
-/* subtle hover elevation */
-.auto-preview:hover .media-wrap{
-  box-shadow:0 6px 18px rgba(0,0,0,0.12);
-  transform:translateY(-2px) scale(1.01);
-}
-
 /* Centered site title overlay */
 .auto-preview-title{
   position:absolute;
@@ -53,7 +39,6 @@
   color:#ffffff;
   pointer-events:none;
   font-weight:700;
-  /* doubled size: previously clamped roughly 1.25rem–2rem */
   font-size:clamp(2.5rem, 4vw + 1rem, 4rem);
   text-align:center;
   text-shadow:0 2px 6px rgba(0,0,0,0.5);
@@ -62,6 +47,8 @@
 /* overlay text container placed by Hero */
 .preview-container{
   position:relative;
+  width:100%;
+  height:100%;
 }
 .preview-container .preview-text{
   position:absolute;

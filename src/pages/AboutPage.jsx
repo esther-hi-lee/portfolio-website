@@ -3,17 +3,23 @@ import React from 'react'
 
 export default function AboutPage() {
   return (
-    <section className="about-page" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
-      <header className="gallery-header">
-        <h1>About</h1>
+    <div className="about-page" style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%'
+    }}>
+      <header className="gallery-header" style={{marginBottom: '2rem'}}>
+        <h1 style={{fontSize: '3rem', margin: 0}}>About</h1>
       </header>
 
-      <div className="container" style={{maxWidth: 800}}>
-        <p>
+      <div className="container" style={{maxWidth: 800, textAlign: 'center'}}>
+        <p style={{fontSize: '1.1rem', lineHeight: '1.8'}}>
           Esther Hyo In Lee is a Game and Entertainment Design student at Otis College of Art and Design. In her work, she focuses on detail, storytelling, functionality, and investigation of play. As a creative, Lee seeks spaces heavily driven by teamwork, innovation, and problem solving.
         </p>
 
-        <div className="about-socials" style={{marginTop: '1.25rem'}}>
+        <div className="about-socials" style={{marginTop: '2rem'}}>
           <a href="https://www.instagram.com/everythingsprecious/" aria-label="Instagram" className="social-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -31,6 +37,6 @@ export default function AboutPage() {
           </a>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

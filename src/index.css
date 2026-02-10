@@ -10,16 +10,225 @@
 }
 
 * { box-sizing: border-box; }
-html, body, #root { height: 100%; }
-body {
+html {
+  height: 100%;
   margin: 0;
+  padding: 0;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   font-family: 'Quicksand', sans-serif;
   background: var(--bg);
   color: var(--text);
 }
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 
-/* Smooth scrolling for in-page navigation */
-html { scroll-behavior: smooth; }
+/* Scroll snap container */
+.scroll-snap-container {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  /* Hide scrollbar so sections fill the full viewport width */
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge */
+}
+.scroll-snap-container::-webkit-scrollbar {
+  display: none;                  /* Chrome/Safari */
+}
+
+/* Full-screen sections with snap alignment */
+.full-screen-section {
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ─── Full-screen project gallery (built-in section) ─── */
+.full-screen-section.gallery-section {
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.project-gallery-fullscreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.project-gallery-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.project-gallery-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.375rem;
+  transition: color 0.2s, background 0.2s;
+}
+
+.project-gallery-back:hover {
+  color: var(--text);
+  background: var(--hover-bg);
+}
+
+.project-gallery-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Main content: video/photo left + info right */
+.project-gallery-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+.project-gallery-media {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 0;
+}
+
+.project-gallery-media .pdf-video-section {
+  flex-shrink: 0;
+}
+
+.project-gallery-media .pdf-video-card iframe,
+.project-gallery-media .pdf-video-card video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: none;
+  max-height: 50vh;
+}
+
+.project-gallery-media .pdf-hero-photo img {
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* Process photos - horizontal scrollable strip */
+.project-gallery-process {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.project-gallery-process-strip {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+  padding-bottom: 0.5rem;
+  scroll-behavior: smooth;
+}
+
+.project-gallery-process-strip::-webkit-scrollbar {
+  height: 6px;
+}
+
+.project-gallery-process-strip::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.project-gallery-process-strip::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+.process-thumb {
+  flex: 0 0 auto;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.process-thumb:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.process-thumb img {
+  height: 100%;
+  width: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Right side: project info */
+.project-gallery-info {
+  flex: 0 0 320px;
+  padding-top: 0.5rem;
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .project-gallery-main {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .project-gallery-info {
+    flex: 0 0 auto;
+  }
+  .project-gallery-topbar {
+    padding: 0.75rem 1rem;
+  }
+}
 
 /* Anchor offset so sections don't hide behind sticky nav */
 .section {
@@ -55,22 +264,25 @@ main.container {
 }
 
 .nav {
-  border-bottom: 1px solid var(--border);
+  border-bottom: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  background: var(--bg);
+  background: transparent;
   z-index: 1000;
-  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  box-shadow: none;
 }
 
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px; /* increased for better readability of nested info */
+  height: 80px;
+  max-width: none;
+  width: 100%;
+  padding: 0 2rem;
 }
 
 .nav-brand {
@@ -83,6 +295,21 @@ main.container {
 /* Increase the brand/name font size by roughly 5pt for better prominence */
 .nav-brand a {
   font-size: calc(1rem + 5pt);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.nav-brand a:hover {
+  opacity: 1;
+}
+
+.nav nav a {
+  opacity: 0.7;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.nav nav a:hover {
+  opacity: 1;
 }
 
 .nav-social-icons {
@@ -182,7 +409,7 @@ main.container {
 }
 
 .hero {
-  padding: 0 0 2rem 0;
+  padding: 0;
 }
 
 .hero h1 {
