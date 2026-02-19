@@ -161,29 +161,30 @@ function SimpleGalleryGrid({ onProjectClick }) {
 
   return (
     <div style={{
-      display: 'flex',
-      flexWrap: 'wrap',
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '0.5rem',
       width: '95%',
       maxWidth: '1800px',
       margin: '0 auto',
       padding: '1rem',
-      alignItems: 'flex-start',
-      justifyContent: 'center'
+      gridAutoFlow: 'dense',
+      alignItems: 'start'
     }}>
       {thumbnails.map(item => {
         const src = `${base}${item.image.replace(/^\//, '')}`
         const isVideo = /\.mp4$/i.test(src)
+        const isHamster = item.id === '1'
         
         return (
           <div key={item.id} style={{
-            flex: '0 0 auto',
-            maxWidth: '32%',
+            width: '100%',
             maxHeight: '45vh',
             overflow: 'hidden',
             boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
             cursor: 'pointer',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            ...(isHamster && { aspectRatio: '12/7' })
           }}
           onClick={() => onProjectClick(item.category)}
           onMouseEnter={e => {
@@ -203,7 +204,7 @@ function SimpleGalleryGrid({ onProjectClick }) {
                 style={{
                   width: '100%',
                   height: '100%',
-                  objectFit: 'contain',
+                  objectFit: isHamster ? 'cover' : 'contain',
                   display: 'block'
                 }}
                 autoPlay
