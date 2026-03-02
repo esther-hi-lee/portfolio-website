@@ -20,9 +20,13 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Didact Gothic', sans-serif;
   background: var(--bg);
   color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 #root {
   height: 100%;
@@ -127,8 +131,9 @@ body {
 }
 
 .project-gallery-media {
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
+  max-width: 65%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -136,30 +141,48 @@ body {
 }
 
 .project-gallery-media .pdf-video-section {
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+.project-gallery-media .pdf-video-card {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-width: none;
+  max-height: calc(100vh - 280px);
 }
 
 .project-gallery-media .pdf-video-card iframe,
 .project-gallery-media .pdf-video-card video {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   display: block;
   border: none;
-  max-height: 50vh;
+}
+
+.project-gallery-media .pdf-hero-section {
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+.project-gallery-media .pdf-hero-photo {
+  width: 100%;
+  max-height: calc(100vh - 280px);
+  overflow: hidden;
 }
 
 .project-gallery-media .pdf-hero-photo img {
   width: 100%;
-  height: auto;
-  max-height: 50vh;
+  height: 100%;
   object-fit: contain;
   display: block;
 }
 
 /* Process photos - horizontal scrollable strip */
 .project-gallery-process {
-  flex: 1;
-  min-height: 0;
+  flex: 0 0 auto;
+  min-height: 120px;
+  height: 150px;
   overflow: hidden;
   border-top: 1px solid var(--border);
   padding-top: 0.75rem;
@@ -221,6 +244,9 @@ body {
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
+  }
+  .project-gallery-media {
+    max-width: 100%;
   }
   .project-gallery-info {
     flex: 0 0 auto;
@@ -503,7 +529,7 @@ main.container {
 }
 
 .project-interactive-scroll h2 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 @media (min-width: 700px) {

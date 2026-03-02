@@ -1,6 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import './AutoScroll.css'
 
+const VIDEO_EXTENSIONS = /\.(mp4|webm|mov|ogg)$/i
+
+function isVideo(url) {
+  return VIDEO_EXTENSIONS.test(url)
+}
+
 function pickSrc(item) {
   return (
     item?.image ||
@@ -30,10 +36,11 @@ export default function AutoScroll({
   const [paused, setPaused] = useState(false)
   const [opacity, setOpacity] = useState(1)
 
-  const images = useMemo(() => {
+  // Filter to only include video files
+  const videos = useMemo(() => {
     return (items || [])
       .map((it) => ({ src: pickSrc(it), alt: pickAlt(it) }))
-      .filter((x) => !!x.src)
+      .filter((x) => !!x.src && isVideo(x.src))
   }, [items])
 
   // Scroll-based opacity fade effect
@@ -72,7 +79,7 @@ export default function AutoScroll({
 
   useEffect(() => {
     const el = containerRef.current
-    if (!el || images.length === 0) return
+    if (!el || videos.length === 0) return
 
     let rafId
     let lastTs
@@ -97,9 +104,9 @@ export default function AutoScroll({
 
     rafId = requestAnimationFrame(step)
     return () => cancelAnimationFrame(rafId)
-  }, [images, speed, paused])
+  }, [videos, speed, paused])
 
-  if (images.length === 0) return null
+  if (videos.length === 0) return null
 
   const handleEnter = () => pauseOnHover && setPaused(true)
   const handleLeave = () => pauseOnHover && setPaused(false)
@@ -124,14 +131,30 @@ export default function AutoScroll({
         onMouseLeave={handleLeave}
       >
         <div className="auto-scroll-track">
-          {images.map((img, idx) => (
+          {videos.map((vid, idx) => (
             <div className="auto-scroll-item" key={`a-${idx}`}>
-              <img src={img.src} alt={img.alt} height={height} loading="lazy" />
+              <video
+                src={vid.src}
+                height={height}
+                muted
+                autoPlay
+                loop
+                playsInline
+                aria-label={vid.alt}
+              />
             </div>
           ))}
-          {images.map((img, idx) => (
+          {videos.map((vid, idx) => (
             <div className="auto-scroll-item" key={`b-${idx}`}>
-              <img src={img.src} alt={img.alt} height={height} loading="lazy" />
+              <video
+                src={vid.src}
+                height={height}
+                muted
+                autoPlay
+                loop
+                playsInline
+                aria-label={vid.alt}
+              />
             </div>
           ))}
         </div>

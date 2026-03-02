@@ -24,12 +24,14 @@
   overflow: hidden;
   background: #000;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
 }
 
 .pdf-video-card iframe,
 .pdf-video-card video {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   display: block;
   border: none;
 }

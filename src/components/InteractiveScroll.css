@@ -16,7 +16,7 @@
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
   margin: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 .interactive-scroll-header p {
@@ -119,7 +119,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Didact Gothic', sans-serif;
   transition: background 0.3s ease, box-shadow 0.3s ease;
   border-radius: 12px;
   margin-bottom: 0.5rem;

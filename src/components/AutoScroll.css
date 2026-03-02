@@ -8,3 +8,4 @@
 .auto-scroll-track { display: flex; align-items: center; gap: var(--gap, 16px); width: max-content; }
 .auto-scroll-item { flex: 0 0 auto; }
 .auto-scroll-item img { display: block; height: var(--height, 160px); width: auto; object-fit: cover; user-select: none; pointer-events: none; }
+.auto-scroll-item video { display: block; height: var(--height, 160px); width: auto; object-fit: cover; user-select: none; pointer-events: none; }

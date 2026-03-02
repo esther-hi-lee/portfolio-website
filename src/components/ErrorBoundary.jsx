@@ -56,7 +56,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffffff',
-    fontFamily: "'Quicksand', sans-serif",
+    fontFamily: "'Didact Gothic', sans-serif",
     padding: '1rem',
   },
   content: {
@@ -66,6 +66,7 @@ const styles = {
   title: {
     fontSize: '3rem',
     fontWeight: '600',
+    fontFamily: "'Be Vietnam Pro', sans-serif",
     color: '#111111',
     margin: '0 0 0.5rem 0',
   },
@@ -88,7 +89,7 @@ const styles = {
   button: {
     padding: '0.75rem 1.5rem',
     fontSize: '1rem',
-    fontFamily: "'Quicksand', sans-serif",
+    fontFamily: "'Didact Gothic', sans-serif",
     fontWeight: '500',
     backgroundColor: '#111111',
     color: '#ffffff',
@@ -99,7 +100,7 @@ const styles = {
   buttonSecondary: {
     padding: '0.75rem 1.5rem',
     fontSize: '1rem',
-    fontFamily: "'Quicksand', sans-serif",
+    fontFamily: "'Didact Gothic', sans-serif",
     fontWeight: '500',
     backgroundColor: '#ffffff',
     color: '#111111',
