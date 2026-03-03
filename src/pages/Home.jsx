@@ -160,17 +160,7 @@ function SimpleGalleryGrid({ onProjectClick }) {
   }).filter(Boolean)
 
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: '0.5rem',
-      width: '95%',
-      maxWidth: '1800px',
-      margin: '0 auto',
-      padding: '1rem',
-      gridAutoFlow: 'dense',
-      alignItems: 'start'
-    }}>
+    <div className="thumbnail-grid">
       {thumbnails.map(item => {
         const src = `${base}${item.image.replace(/^\//, '')}`
         const isVideo = /\.mp4$/i.test(src)
@@ -280,15 +270,12 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section id="projects" className="full-screen-section">
+      <section id="projects" className="full-screen-section" style={{ justifyContent: 'flex-start', paddingTop: '5rem' }}>
         <h1 style={{
           fontSize: '3rem',
           fontWeight: 600,
-          margin: '0 0 2rem 0',
+          margin: '0 0 1rem 0',
           color: 'var(--text)',
-          position: 'absolute',
-          top: '6rem',
-          zIndex: 5
         }}>Projects</h1>
         <SimpleGalleryGrid onProjectClick={handleProjectClick} />
       </section>
