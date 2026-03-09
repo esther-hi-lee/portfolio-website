@@ -14,11 +14,6 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:opacity .36s ease-in-out, transform .36s ease-in-out;
-  opacity:0;
-  transform:scale(0.99);
-}
-.media-wrap.visible{
   opacity:1;
   transform:scale(1);
 }
@@ -41,7 +36,6 @@
   font-weight:700;
   font-size:clamp(2.5rem, 4vw + 1rem, 4rem);
   text-align:center;
-  text-shadow:0 2px 6px rgba(0,0,0,0.5);
 }
 
 /* overlay text container placed by Hero */
@@ -65,10 +59,8 @@
 /* ensure text remains readable on varying media */
 .preview-container .preview-text h1{
   color:var(--text-color, #fff);
-  text-shadow:0 2px 6px rgba(0,0,0,0.45);
 }
 .preview-container .preview-text p{
   color:var(--muted-text-color, #fff);
   opacity:0.92;
-  text-shadow:0 1px 4px rgba(0,0,0,0.35);
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import Hero from '../components/Hero.jsx'
 import AboutPage from './AboutPage.jsx'
@@ -47,9 +47,26 @@ function ProjectGallerySection({ category, onClose }) {
         <div style={{ width: 140 }} />{/* spacer for centering */}
       </div>
 
-      {/* Main content area - no scroll, fits in viewport */}
+      {/* Main content area - 3 columns: thumbs | media | info */}
       <div className="project-gallery-main">
-        {/* Left: Video or hero photo */}
+        {/* Left: Process photo thumbnails (vertical scroll) */}
+        {(() => {
+          const gridPhotos = hasVideo ? photos : photos.slice(1)
+          return gridPhotos.length > 0 && (
+            <div className="project-gallery-thumbs">
+              {gridPhotos.map((photo) => {
+                const originalIndex = photos.indexOf(photo)
+                return (
+                  <div key={photo.id} className="process-thumb" onClick={() => openLightbox(photo, originalIndex)}>
+                    <img src={photo.image} alt={photo.title} loading="lazy" />
+                  </div>
+                )
+              })}
+            </div>
+          )
+        })()}
+
+        {/* Center: Video or hero photo */}
         <div className="project-gallery-media">
           {hasVideo && (
             <div className="pdf-video-section">
@@ -71,31 +88,12 @@ function ProjectGallerySection({ category, onClose }) {
           )}
 
           {!hasVideo && photos.length > 0 && (
-            <div className="pdf-hero-section" style={{ marginBottom: 0 }}>
+            <div className="pdf-hero-section">
               <div className="pdf-hero-photo" onClick={() => openLightbox(photos[0], 0)}>
                 <img src={photos[0].image} alt={photos[0].title} />
               </div>
             </div>
           )}
-
-          {/* Process photos - compact scrollable strip below video/photo */}
-          {(() => {
-            const gridPhotos = hasVideo ? photos : photos.slice(1)
-            return gridPhotos.length > 0 && (
-              <div className="project-gallery-process">
-                <div className="project-gallery-process-strip">
-                  {gridPhotos.map((photo) => {
-                    const originalIndex = photos.indexOf(photo)
-                    return (
-                      <div key={photo.id} className="process-thumb" onClick={() => openLightbox(photo, originalIndex)}>
-                        <img src={photo.image} alt={photo.title} loading="lazy" />
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            )
-          })()}
         </div>
 
         {/* Right: Project info */}
@@ -154,7 +152,7 @@ function SimpleGalleryGrid({ onProjectClick }) {
     return item ? {
       id: item.id || idx,
       image: item.thumbnail,
-      title: item.title || item.category,
+      title: item.category,
       category: item.category
     } : null
   }).filter(Boolean)
@@ -166,25 +164,8 @@ function SimpleGalleryGrid({ onProjectClick }) {
         const isVideo = /\.mp4$/i.test(src)
         
         return (
-          <div key={item.id} style={{
-            width: '100%',
-            aspectRatio: '12/7',
-            overflow: 'hidden',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-            cursor: 'pointer',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-          }}
+          <div key={item.id} className="thumbnail-card"
           onClick={() => onProjectClick(item.category)}
-          onMouseEnter={e => {
-            e.currentTarget.style.transform = 'scale(1.02)'
-            e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.3)'
-            e.currentTarget.style.zIndex = '10'
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.transform = 'scale(1)'
-            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)'
-            e.currentTarget.style.zIndex = '1'
-          }}
           >
             {isVideo ? (
               <video
@@ -212,6 +193,9 @@ function SimpleGalleryGrid({ onProjectClick }) {
                 }}
               />
             )}
+            <div className="thumbnail-overlay">
+              <span className="thumbnail-overlay-title">{item.title}</span>
+            </div>
           </div>
         )
       })}
@@ -223,8 +207,66 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null)
   const gallerySectionRef = useRef(null)
   const containerRef = useRef(null)
+  const isScrollingRef = useRef(false)
+  const touchStartY = useRef(0)
+  const wheelAccum = useRef(0)
+  const wheelTimer = useRef(null)
+  const scrollCooldown = 1200 // ms to ignore input while scrolling
+  const wheelThreshold = 80  // accumulated deltaY needed to trigger a section change
+  const scrollDuration = 650 // ms for scroll animation
+  const rafRef = useRef(null)
 
   const categories = getCategoryInfo()
+
+  /* ── Find current section index from scroll position ── */
+  const getCurrentSectionIndex = useCallback(() => {
+    const container = containerRef.current
+    if (!container) return 0
+    const sections = container.querySelectorAll('.full-screen-section')
+    const scrollTop = container.scrollTop
+    const mid = scrollTop + container.clientHeight / 2
+    let idx = 0
+    for (let i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= mid) idx = i
+    }
+    return idx
+  }, [])
+
+  /* ── Smooth scroll with controlled duration ── */
+  const scrollToSection = useCallback((sectionEl) => {
+    const container = containerRef.current
+    if (!container || !sectionEl) return
+    if (isScrollingRef.current) return
+    isScrollingRef.current = true
+
+    // Cancel any in-flight animation
+    if (rafRef.current) cancelAnimationFrame(rafRef.current)
+
+    const startY = container.scrollTop
+    const targetY = sectionEl.offsetTop
+    const diff = targetY - startY
+    if (Math.abs(diff) < 1) { isScrollingRef.current = false; return }
+
+    // Disable snap during animation
+    container.style.scrollSnapType = 'none'
+    let startTime = null
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3) }
+
+    function step(ts) {
+      if (!startTime) startTime = ts
+      const progress = Math.min((ts - startTime) / scrollDuration, 1)
+      container.scrollTop = startY + diff * easeOutCubic(progress)
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(step)
+      } else {
+        container.style.scrollSnapType = 'y mandatory'
+        setTimeout(() => { isScrollingRef.current = false }, 200)
+      }
+    }
+
+    rafRef.current = requestAnimationFrame(step)
+  }, [scrollDuration])
 
   const handleProjectClick = (categoryName) => {
     const cat = categories.find(c => c.title === categoryName)
@@ -235,34 +277,129 @@ export default function Home() {
 
   const handleCloseGallery = () => {
     setSelectedProject(null)
-    // Scroll back to the projects section
     setTimeout(() => {
       const projectsSection = document.getElementById('projects')
-      if (projectsSection && containerRef.current) {
-        containerRef.current.scrollTo({
-          top: projectsSection.offsetTop,
-          behavior: 'smooth'
-        })
+      if (projectsSection) {
+        scrollToSection(projectsSection)
       }
     }, 50)
   }
 
   // Scroll to gallery section when a project is selected
   useEffect(() => {
-    if (selectedProject && gallerySectionRef.current && containerRef.current) {
+    if (selectedProject && gallerySectionRef.current) {
       setTimeout(() => {
-        gallerySectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        scrollToSection(gallerySectionRef.current)
       }, 50)
     }
-  }, [selectedProject])
+  }, [selectedProject, scrollToSection])
 
   // On mount, reset any native scroll offset caused by hash fragments
   useEffect(() => {
-    // Fix browser's native hash scroll breaking layout
     window.scrollTo(0, 0)
     document.documentElement.scrollTop = 0
     document.body.scrollTop = 0
   }, [])
+
+  /* ── Wheel event: accumulate delta before triggering ── */
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const handleWheel = (e) => {
+      // If cursor is over a scrollable thumbnail panel, let it scroll naturally
+      const thumbsPanel = e.target.closest('.project-gallery-thumbs')
+      if (thumbsPanel) {
+        const { scrollTop, scrollHeight, clientHeight } = thumbsPanel
+        const atTop = scrollTop <= 0 && e.deltaY < 0
+        const atBottom = scrollTop + clientHeight >= scrollHeight - 1 && e.deltaY > 0
+        // Only intercept if the panel can't scroll further in that direction
+        if (!atTop && !atBottom) return
+      }
+
+      e.preventDefault()
+      if (isScrollingRef.current) return
+
+      // Accumulate scroll delta
+      wheelAccum.current += e.deltaY
+
+      // Reset accumulator after a pause in scrolling (gesture ended)
+      clearTimeout(wheelTimer.current)
+      wheelTimer.current = setTimeout(() => { wheelAccum.current = 0 }, 200)
+
+      // Only trigger when enough delta has built up
+      if (Math.abs(wheelAccum.current) < wheelThreshold) return
+
+      const direction = wheelAccum.current > 0 ? 1 : -1
+      wheelAccum.current = 0 // reset after triggering
+
+      const sections = container.querySelectorAll('.full-screen-section')
+      const currentIdx = getCurrentSectionIndex()
+      const nextIdx = Math.max(0, Math.min(currentIdx + direction, sections.length - 1))
+
+      if (nextIdx !== currentIdx) {
+        scrollToSection(sections[nextIdx])
+      }
+    }
+
+    container.addEventListener('wheel', handleWheel, { passive: false })
+    return () => {
+      container.removeEventListener('wheel', handleWheel)
+      clearTimeout(wheelTimer.current)
+    }
+  }, [getCurrentSectionIndex, scrollToSection, selectedProject])
+
+  /* ── Touch events: swipe to navigate ── */
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const handleTouchStart = (e) => {
+      touchStartY.current = e.touches[0].clientY
+    }
+
+    const handleTouchEnd = (e) => {
+      if (isScrollingRef.current) return
+      const deltaY = touchStartY.current - e.changedTouches[0].clientY
+      if (Math.abs(deltaY) < 50) return // ignore small swipes
+
+      const sections = container.querySelectorAll('.full-screen-section')
+      const currentIdx = getCurrentSectionIndex()
+      const direction = deltaY > 0 ? 1 : -1
+      const nextIdx = Math.max(0, Math.min(currentIdx + direction, sections.length - 1))
+
+      if (nextIdx !== currentIdx) {
+        scrollToSection(sections[nextIdx])
+      }
+    }
+
+    container.addEventListener('touchstart', handleTouchStart, { passive: true })
+    container.addEventListener('touchend', handleTouchEnd, { passive: true })
+    return () => {
+      container.removeEventListener('touchstart', handleTouchStart)
+      container.removeEventListener('touchend', handleTouchEnd)
+    }
+  }, [getCurrentSectionIndex, scrollToSection, selectedProject])
+
+  /* ── IntersectionObserver: fade sections in/out ── */
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle('section-visible', entry.isIntersecting)
+        })
+      },
+      { root: container, threshold: 0.25 }
+    )
+
+    const sections = container.querySelectorAll('.full-screen-section')
+    sections.forEach(s => observer.observe(s))
+
+    return () => observer.disconnect()
+  }, [selectedProject])
 
   return (
     <div className="scroll-snap-container" ref={containerRef}>

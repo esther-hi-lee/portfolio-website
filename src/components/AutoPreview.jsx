@@ -13,22 +13,19 @@ export default function AutoPreview() {
   .map(a => `${base}${a.thumbnail.replace(/^\//, '')}`)
 
   const [index, setIndex] = useState(0)
-  const [visible, setVisible] = useState(true)
   const videoRef = useRef(null)
   const timeoutRef = useRef(null)
 
   useEffect(() => {
     const current = thumbs[index]
-    // If current is image, auto-advance after 3s (plus transition)
+    // If current is image, auto-advance after 3s
     if (!isVideo(current)) {
       if (videoRef.current) {
         videoRef.current.onended = null
       }
       clearTimeout(timeoutRef.current)
       timeoutRef.current = setTimeout(() => {
-        // fade out, then advance
-        setVisible(false)
-        setTimeout(() => setIndex(i => (i + 1) % thumbs.length), 300)
+        setIndex(i => (i + 1) % thumbs.length)
       }, 3000)
     } else {
       // For video: wait for video to end to advance
@@ -38,8 +35,7 @@ export default function AutoPreview() {
         vid.muted = true
         vid.play().catch(() => {})
         vid.onended = () => {
-          setVisible(false)
-          setTimeout(() => setIndex(i => (i + 1) % thumbs.length), 300)
+          setIndex(i => (i + 1) % thumbs.length)
         }
       }
     }
@@ -47,18 +43,11 @@ export default function AutoPreview() {
     return () => clearTimeout(timeoutRef.current)
   }, [index])
 
-  // When index changes, fade in the new media after short delay
-  useEffect(() => {
-    setVisible(false)
-    const t = setTimeout(() => setVisible(true), 60)
-    return () => clearTimeout(t)
-  }, [index])
-
   const src = thumbs[index]
 
   return (
     <div className="auto-preview" aria-hidden={false} aria-label="View gallery preview">
-      <div className={`media-wrap ${visible ? 'visible' : ''}`}>
+      <div className="media-wrap visible">
         {isVideo(src) ? (
           <video
             ref={videoRef}

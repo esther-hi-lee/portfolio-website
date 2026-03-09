@@ -1,18 +1,34 @@
 import React from 'react'
 
+function smoothScrollTo(container, targetY, duration = 650) {
+  const startY = container.scrollTop
+  const diff = targetY - startY
+  if (Math.abs(diff) < 1) return
+  container.style.scrollSnapType = 'none'
+  let startTime = null
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3) }
+  function step(ts) {
+    if (!startTime) startTime = ts
+    const progress = Math.min((ts - startTime) / duration, 1)
+    container.scrollTop = startY + diff * easeOutCubic(progress)
+    if (progress < 1) {
+      requestAnimationFrame(step)
+    } else {
+      container.style.scrollSnapType = 'y mandatory'
+    }
+  }
+  requestAnimationFrame(step)
+}
+
 export default function Navbar() {
   const handleNavClick = (e, id) => {
     e.preventDefault()
     const targetSection = document.getElementById(id)
     if (!targetSection) return
     
-    // Scroll within the snap container
     const container = targetSection.closest('.scroll-snap-container')
     if (container) {
-      container.scrollTo({
-        top: targetSection.offsetTop,
-        behavior: 'smooth'
-      })
+      smoothScrollTo(container, targetSection.offsetTop)
     }
   }
   
@@ -20,7 +36,9 @@ export default function Navbar() {
     <header className="nav">
       <div className="nav-inner">
         <div className="nav-brand">
-          <a href="/" onClick={(e) => handleNavClick(e, 'home')} style={{fontWeight:800, textDecoration:'none', color:'inherit'}}>Esther Hyo In Lee</a>
+          <a href="/" onClick={(e) => handleNavClick(e, 'home')} style={{textDecoration:'none'}}>
+            <img src="/bunny%20web%20logo%20larger.png" alt="Esther Lee logo" className="nav-logo" />
+          </a>
         </div>
         <nav>
           <a href="/" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
