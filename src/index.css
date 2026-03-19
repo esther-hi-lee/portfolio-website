@@ -494,13 +494,34 @@ main.container {
   opacity: 1;
 }
 
+.nav nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  z-index: 1;
+}
+
 .nav nav a {
-  opacity: 0.7;
-  transition: opacity 0.3s ease, background 0.3s ease;
+  color: #000;
+  opacity: 0.98;
+  font-weight: 700;
+  transition: opacity 0.18s ease, background 0.18s ease;
+  position: relative;
+  z-index: 2;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
 }
 
 .nav nav a:hover {
   opacity: 1;
+  background: rgba(0,0,0,0.04);
 }
 
 .nav-social-icons {
@@ -526,16 +547,12 @@ main.container {
   height:30px;
 }
 
-.nav nav {
-  display: flex;
-  align-items: center;
-}
-
 .nav a {
   margin-left: 1rem;
   padding: .25rem .5rem;
   border-radius: .5rem;
-  color: #fff;
+  color: #000;
+  font-weight: 700;
 }
 
 .nav a.active {
