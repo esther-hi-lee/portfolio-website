@@ -211,6 +211,8 @@ export default function Home() {
   const touchStartY = useRef(0)
   const wheelAccum = useRef(0)
   const wheelTimer = useRef(null)
+  const thumbsOverScrollCountRef = useRef(0)
+  const thumbsOverScrollTimerRef = useRef(null)
   const scrollCooldown = 1200 // ms to ignore input while scrolling
   const wheelThreshold = 80  // accumulated deltaY needed to trigger a section change
   const scrollDuration = 650 // ms for scroll animation
@@ -260,7 +262,12 @@ export default function Home() {
       if (progress < 1) {
         rafRef.current = requestAnimationFrame(step)
       } else {
-        container.style.scrollSnapType = 'y mandatory'
+        // Restore proximity snapping only if the destination requests it
+        if (sectionEl.classList && sectionEl.classList.contains('snap-section')) {
+          container.style.scrollSnapType = 'y proximity'
+        } else {
+          container.style.scrollSnapType = ''
+        }
         setTimeout(() => { isScrollingRef.current = false }, 200)
       }
     }
@@ -315,6 +322,24 @@ export default function Home() {
         const atBottom = scrollTop + clientHeight >= scrollHeight - 1 && e.deltaY > 0
         // Only intercept if the panel can't scroll further in that direction
         if (!atTop && !atBottom) return
+
+        // More generous grace: require two deliberate over-scroll gestures
+        // within a short window before navigating away from the internal scroller.
+        if (atBottom && e.deltaY > 0) {
+          thumbsOverScrollCountRef.current += 1
+          clearTimeout(thumbsOverScrollTimerRef.current)
+          thumbsOverScrollTimerRef.current = setTimeout(() => { thumbsOverScrollCountRef.current = 0 }, 900)
+          if (thumbsOverScrollCountRef.current < 2) return
+          thumbsOverScrollCountRef.current = 0
+        }
+
+        if (atTop && e.deltaY < 0) {
+          thumbsOverScrollCountRef.current += 1
+          clearTimeout(thumbsOverScrollTimerRef.current)
+          thumbsOverScrollTimerRef.current = setTimeout(() => { thumbsOverScrollCountRef.current = 0 }, 900)
+          if (thumbsOverScrollCountRef.current < 2) return
+          thumbsOverScrollCountRef.current = 0
+        }
       }
 
       e.preventDefault()
@@ -346,6 +371,7 @@ export default function Home() {
     return () => {
       container.removeEventListener('wheel', handleWheel)
       clearTimeout(wheelTimer.current)
+      clearTimeout(thumbsOverScrollTimerRef.current)
     }
   }, [getCurrentSectionIndex, scrollToSection, selectedProject])
 
@@ -407,7 +433,7 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section id="projects" className="full-screen-section" style={{ justifyContent: 'flex-start', paddingTop: '5rem' }}>
+      <section id="projects" className="full-screen-section snap-section" style={{ justifyContent: 'flex-start', paddingTop: '5rem' }}>
         <h1 style={{
           fontSize: '3rem',
           fontWeight: 600,

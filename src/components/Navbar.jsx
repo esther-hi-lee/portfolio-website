@@ -4,7 +4,6 @@ function smoothScrollTo(container, targetY, duration = 650) {
   const startY = container.scrollTop
   const diff = targetY - startY
   if (Math.abs(diff) < 1) return
-  container.style.scrollSnapType = 'none'
   let startTime = null
   function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3) }
   function step(ts) {
@@ -13,8 +12,6 @@ function smoothScrollTo(container, targetY, duration = 650) {
     container.scrollTop = startY + diff * easeOutCubic(progress)
     if (progress < 1) {
       requestAnimationFrame(step)
-    } else {
-      container.style.scrollSnapType = 'y mandatory'
     }
   }
   requestAnimationFrame(step)
