@@ -20,8 +20,11 @@ const VIDEO_LOAD_TIMEOUT_MS = 3000
 export default function AutoPreview() {
   const base = (import.meta && import.meta.env && import.meta.env.BASE_URL) || '/'
   const thumbs = artworks
-    .filter(a => a.thumbnail && isVideo(a.thumbnail))
-    .map(a => `${base}${a.thumbnail.replace(/^\//, '')}`)
+    .filter(a => (a.previewVideo && isVideo(a.previewVideo)) || (a.thumbnail && isVideo(a.thumbnail)))
+    .map(a => {
+      const src = a.previewVideo && isVideo(a.previewVideo) ? a.previewVideo : a.thumbnail
+      return `${base}${src.replace(/^\//, '')}`
+    })
 
   const fallbackSrcs = FALLBACK_IMAGES.map(p => `${base}${p}`)
 

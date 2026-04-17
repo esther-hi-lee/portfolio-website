@@ -22,15 +22,33 @@ function ProjectGallerySection({ category, onClose }) {
   const openLightbox = (photo, index) => { setLightboxPhoto(photo); setLightboxIndex(index) }
   const closeLightbox = () => setLightboxPhoto(null)
   const goToPrev = (e) => {
-    e.stopPropagation()
+    if (e) e.stopPropagation()
     const i = lightboxIndex > 0 ? lightboxIndex - 1 : photos.length - 1
     setLightboxIndex(i); setLightboxPhoto(photos[i])
   }
   const goToNext = (e) => {
-    e.stopPropagation()
+    if (e) e.stopPropagation()
     const i = lightboxIndex < photos.length - 1 ? lightboxIndex + 1 : 0
     setLightboxIndex(i); setLightboxPhoto(photos[i])
   }
+
+  // Arrow key navigation for lightbox
+  useEffect(() => {
+    if (!lightboxPhoto) return
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault()
+        goToPrev()
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault()
+        goToNext()
+      } else if (e.key === 'Escape') {
+        closeLightbox()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [lightboxPhoto, lightboxIndex, photos])
 
   return (
     <div className="project-gallery-fullscreen">
@@ -77,6 +95,7 @@ function ProjectGallerySection({ category, onClose }) {
                     title={videoItem.title || 'YouTube video'}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
+                    loading="lazy"
                   />
                 ) : (
                   <video controls preload="metadata" playsInline poster={videoItem.poster || videoItem.image || undefined}>
@@ -180,6 +199,7 @@ function SimpleGalleryGrid({ onProjectClick }) {
                 loop
                 muted
                 playsInline
+                preload="metadata"
               />
             ) : (
               <img
