@@ -162,7 +162,6 @@ function SimpleGalleryGrid({ onProjectClick }) {
     'P7-video',  // Let's Make Breakfast
     '5',         // Drowsy Cinematic Nature Scene
     'P3-process-1', // Resting Point Scene
-    '1',         // A Hungry Hamster
     'P6-slide-first'  // Nerve Game Concept
   ]
 

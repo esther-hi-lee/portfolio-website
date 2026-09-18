@@ -247,15 +247,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── Thumbnail grid for projects section ─── */
+/* 6-column grid so 2-column-span cards align 3-per-row, with row 2 (2 cards) centered */
 .thumbnail-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 0.5rem;
   width: 95%;
   max-width: 1800px;
   margin: 0 auto;
   padding: 1rem;
   align-items: start;
+}
+
+.thumbnail-card {
+  grid-column: span 2;
+}
+
+.thumbnail-card:nth-child(4) {
+  grid-column: 2 / 4;
+}
+
+.thumbnail-card:nth-child(5) {
+  grid-column: 4 / 6;
 }
 
 .thumbnail-card {
@@ -363,6 +376,11 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     padding: 0.75rem;
   }
+  .thumbnail-card,
+  .thumbnail-card:nth-child(4),
+  .thumbnail-card:nth-child(5) {
+    grid-column: span 1;
+  }
 }
 
 /* ─── Responsive: mobile ─── */
@@ -391,6 +409,11 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.35rem;
     padding: 0.5rem;
+  }
+  .thumbnail-card,
+  .thumbnail-card:nth-child(4),
+  .thumbnail-card:nth-child(5) {
+    grid-column: span 1;
   }
   .nav-inner {
     height: 60px;

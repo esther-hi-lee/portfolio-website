@@ -11,15 +11,17 @@ const FALLBACK_IMAGES = [
   'assets/Homepage Static Fading Transitions 3-18/Copy of Mini Game Mechanic 3.png',
   'assets/Homepage Static Fading Transitions 3-18/Copy of Resting Point Thumbnail.png',
   'assets/Homepage Static Fading Transitions 3-18/Copy of process pic city 1.png',
-  'assets/Homepage Static Fading Transitions 3-18/Copy of process pic hamster3.png',
   'assets/Homepage Static Fading Transitions 3-18/Copy of process pic nature scene 3.png',
 ]
+
+const EXCLUDED_CATEGORIES = ['"A Hungry Hamster" Side Scroller Game']
 
 const VIDEO_LOAD_TIMEOUT_MS = 3000
 
 export default function AutoPreview() {
   const base = (import.meta && import.meta.env && import.meta.env.BASE_URL) || '/'
   const thumbs = artworks
+    .filter(a => !EXCLUDED_CATEGORIES.includes(a.category))
     .filter(a => (a.previewVideo && isVideo(a.previewVideo)) || (a.thumbnail && isVideo(a.thumbnail)))
     .map(a => {
       const src = a.previewVideo && isVideo(a.previewVideo) ? a.previewVideo : a.thumbnail
