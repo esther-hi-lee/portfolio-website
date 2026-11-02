@@ -16,7 +16,7 @@ export default function AboutPage() {
 
       <div className="container" style={{maxWidth: 800, textAlign: 'center'}}>
         <p style={{fontSize: '1.1rem', lineHeight: '1.8'}}>
-          Esther Hyo In Lee is a Game and Entertainment Design student at Otis College of Art and Design. In her work, she focuses on detail, storytelling, functionality, and investigation of play. As a creative, Lee seeks spaces heavily driven by teamwork, innovation, and problem solving.
+          Esther Hyo In Lee is a game designer with a focus in 3D modeling and texture art. In her work, she focuses on detail, storytelling, functionality, and investigation of play. As a creative, Lee seeks spaces heavily driven by teamwork, innovation, and problem solving.
         </p>
 
         <div className="about-socials" style={{marginTop: '2rem'}}>

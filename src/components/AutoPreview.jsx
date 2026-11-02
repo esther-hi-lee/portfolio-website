@@ -121,7 +121,7 @@ export default function AutoPreview() {
 
     return () => clearAdvance()
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index])
+  }, [index, useFallback])
 
   // when active layer changes and it's a video, start playback and set onended
   useEffect(() => {

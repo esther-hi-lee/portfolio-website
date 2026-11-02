@@ -228,6 +228,7 @@ export default function Home() {
   const containerRef = useRef(null)
   const isScrollingRef = useRef(false)
   const touchStartY = useRef(0)
+  const touchStartedInContact = useRef(false)
   const wheelAccum = useRef(0)
   const wheelTimer = useRef(null)
   const thumbsOverScrollCountRef = useRef(0)
@@ -401,9 +402,14 @@ export default function Home() {
 
     const handleTouchStart = (e) => {
       touchStartY.current = e.touches[0].clientY
+      touchStartedInContact.current = Boolean(e.target.closest('#contact'))
     }
 
     const handleTouchEnd = (e) => {
+      if (touchStartedInContact.current) {
+        touchStartedInContact.current = false
+        return
+      }
       if (isScrollingRef.current) return
       const deltaY = touchStartY.current - e.changedTouches[0].clientY
       if (Math.abs(deltaY) < 50) return // ignore small swipes
